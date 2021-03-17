@@ -1,0 +1,12 @@
+.materialItem {
+    display: flex;
+    align-items: center;
+
+    .listStyle {
+        width: 13px;
+        height: 13px;
+        background: var(--darkGray);
+        border-radius: 2px;
+        margin-right: 10px;
+    }
+}

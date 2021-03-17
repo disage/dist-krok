@@ -1,0 +1,63 @@
+.lastMaterialItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: var(--lightGray);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    .materialWrapper {
+        display: flex;
+        .courseName {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 42px;
+            background: var(--darkGray);
+            color: var(--white);
+            font-family: var(--roboto);
+            font-weight: 500;
+            font-size: 18px;
+            padding: 9px;
+            border-radius: 10px;
+        }
+        .materialInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 10px;
+            span {
+                font-family: var(--roboto);
+                font-weight: 500;
+                font-size: 18px;
+                color: var(--darkGray);
+            }
+            .materialDate {
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .materialBtn {
+        display: flex;
+        padding: 0px 39px 0px 39px;
+        background: var(--white);
+        border-radius: 7px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-family: var(--roboto);
+        font-weight: 400;
+        font-size: 18px;
+        color: var(--darkGray);
+        transition: 0.5s;
+        &:hover {
+            background: var(--darkGray);
+            color: var(--white);
+            transition: 0.5s;
+        }
+    }
+}

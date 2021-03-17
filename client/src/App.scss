@@ -1,0 +1,19 @@
+@import "./assets/colors/colors.scss";
+@import "./assets/fonts/fonts.scss";
+
+.app {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+h2 {
+  font-family: var(--montserrat);
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--darkGray);
+}
+a {
+  text-decoration: none;
+}

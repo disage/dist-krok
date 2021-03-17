@@ -1,0 +1,32 @@
+.testItem {
+    h3 {
+        margin-top: 0;
+    }
+    p {
+        margin-left: 30px;
+    }
+    .answerItem {
+        margin-left: 30px;
+        label {
+            display: inline-flex;
+            margin: 0px 0px 30px 10px;
+        }
+        input {
+            margin: 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0px;
+            width: 15px;
+            height: 15px;
+            border: 1px solid var(--darkGray);
+            transition: 0.3s all;
+            outline: none;
+            cursor: pointer;
+            &:checked {
+                background: var(--darkGray);
+                transition: 0.3s;
+            }
+        }
+    }
+}
