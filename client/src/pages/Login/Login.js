@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import auth from '../../store/auth';
+import { observer } from 'mobx-react-lite';
 import './Login.scss';
 
-const Login = () => {
-  const { login, currentUser } = useAuth();
-
+const Login = observer(() => {
   const [error, setError] = useState('');
   const [user, setUser] = useState({ email: '', password: '' });
 
@@ -20,17 +19,15 @@ const Login = () => {
     event.preventDefault();
     try {
       setError('');
-      await login(user.email, user.password);
+      await auth.setCurrentUser(user.email, user.password);
     } catch {
       setError('Failed to login');
     }
   };
-
   return (
     <div className="login">
       <form className="loginForm" onSubmit={handleSubmit}>
         <h2>КРОК</h2>
-        <h2>Idi nahuy</h2>
         <span>Атворизуйтесь для работы с приложением</span>
         <label htmlFor="email">E-mail</label>
         <input
@@ -52,10 +49,10 @@ const Login = () => {
         />
         <input type="submit" id="loginBtn" value="Log In" />
         <p>{error}</p>
-        {currentUser && currentUser.email}
+        {/* {currentUser && currentUser.email} */}
       </form>
     </div>
   );
-};
+});
 
 export default Login;

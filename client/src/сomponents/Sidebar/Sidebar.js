@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+import auth from '../../store/auth';
+import { observer } from 'mobx-react-lite';
+
 import './Sidebar.scss';
 
-const Sidebar = () => {
+const Sidebar = observer(() => {
   const [error, setError] = useState('');
-  const { currentUser, logout } = useAuth();
 
   async function handleLogout() {
     setError('');
-
     try {
-      await logout();
+      await auth.clearCurrentUser();
     } catch {
       setError('Failed to log out');
       alert(error);
@@ -150,7 +150,7 @@ const Sidebar = () => {
         </NavLink>
       </nav>
       <div className="userInfo">
-        <span className="userName">{currentUser && currentUser.email}</span>
+        <span className="userName">Name{/* {currentUser && currentUser.email} */}</span>
         <span>ІПЗР-17к</span>
         <span>4 курс</span>
         <span className="exitAcc" onClick={handleLogout}>
@@ -159,6 +159,6 @@ const Sidebar = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Sidebar;

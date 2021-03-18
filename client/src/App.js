@@ -8,14 +8,15 @@ import AllGrades from './pages/AllGrades/AllGrades';
 import Grades from './pages/Grades/Grades';
 import Login from './pages/Login/Login';
 import Sidebar from './сomponents/Sidebar/Sidebar';
-import { useAuth } from './contexts/AuthContext';
+import auth from './store/auth';
+import { observer } from 'mobx-react-lite';
+
 import './App.scss';
 
-const App = () => {
-  const { currentUser } = useAuth();
+const App = observer(() => {
   return (
     <BrowserRouter>
-      {!currentUser ? (
+      {!auth.isLoggined ? (
         <Login />
       ) : (
         <div className="app">
@@ -30,5 +31,5 @@ const App = () => {
       )}
     </BrowserRouter>
   );
-};
+});
 export default App;

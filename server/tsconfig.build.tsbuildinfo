@@ -2320,6 +2320,11 @@
         "version": "19a1bd57c2b3dd10bc4ae33eaa9e88f0f067858e32b7765b7e9d38138cd07f30",
         "signature": "19a1bd57c2b3dd10bc4ae33eaa9e88f0f067858e32b7765b7e9d38138cd07f30",
         "affectsGlobalScope": false
+      },
+      "../../../node_modules/@types/color-name/index.d.ts": {
+        "version": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
+        "signature": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
+        "affectsGlobalScope": false
       }
     },
     "options": {
@@ -5940,7 +5945,23 @@
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "./node_modules/typescript/lib/lib.scripthost.d.ts",
-      "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts"
+      "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "./src/app.controller.ts",
+      "./src/app.module.ts",
+      "./src/auth/auth.module.ts",
+      "./src/auth/auth.service.ts",
+      "./src/constants.ts",
+      "./src/main.ts",
+      "./src/post/dto/create-post.dto.ts",
+      "./src/post/dto/update-post.dto.ts",
+      "./src/post/post.controller.ts",
+      "./src/post/post.module.ts",
+      "./src/post/post.service.ts",
+      "./src/post/post.types.ts",
+      "./src/post/schemas/post.schema.ts",
+      "./src/users/users.module.ts",
+      "./src/users/users.service.ts",
+      "../../../node_modules/@types/color-name/index.d.ts"
     ]
   },
   "version": "4.1.3"

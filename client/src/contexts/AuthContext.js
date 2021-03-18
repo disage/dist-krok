@@ -1,49 +1,55 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { auth, database } from '../firebase';
-const AuthContext = React.createContext();
+// import React, { useContext, useState, useEffect } from 'react';
+// // import { auth, database } from '../firebase';
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+// const AuthContext = React.createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState();
-  const [coursesData, setCoursesData] = useState([]);
+// export const useAuth = () => {
+//   return useContext(AuthContext);
+// };
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-    });
+// export const AuthProvider = ({ children }) => {
+//   const [currentUser, setCurrentUser] = useState();
+//   console.log(currentUser);
+//   // const [coursesData, setCoursesData] = useState([]);
 
-    return unsubscribe;
-  }, []);
+//   // useEffect(() => {
+//   //   const unsubscribe = auth.onAuthStateChanged((user) => {
+//   //     setCurrentUser(user);
+//   //   });
 
-  const getCourses = () => {
-    database
-      .child('courses')
-      .get()
-      .then((snapshot) => {
-        setCoursesData(snapshot.val());
-      });
-  };
+//   //   return unsubscribe;
+//   // }, []);
 
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
-  };
+//   // const getCourses = () => {
+//   //   database
+//   //     .child('courses')
+//   //     .get()
+//   //     .then((snapshot) => {
+//   //       setCoursesData(snapshot.val());
+//   //     });
+//   // };
 
-  function logout() {
-    return auth.signOut();
-  }
+//   const login = (email, password) => {
+//     if (email && password) {
+//       setCurrentUser({ email: email, password: password });
+//       console.log('ok');
+//     }
+//   };
 
-  auth.onAuthStateChanged((user) => {
-    setCurrentUser(user);
-  });
-  const value = {
-    currentUser,
-    coursesData,
-    login,
-    logout,
-    getCourses,
-  };
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
+//   const logout = () => {
+//     setCurrentUser(null);
+//   };
+
+//   // auth.onAuthStateChanged((user) => {
+//   //   setCurrentUser(user);
+//   // });
+
+//   const value = {
+//     currentUser,
+//     // coursesData,
+//     login,
+//     logout,
+//     // getCourses,
+//   };
+//   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+// };

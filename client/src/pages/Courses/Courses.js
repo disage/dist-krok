@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import CourseItem from '../../сomponents/CourseItem/CourseItem';
-import { useAuth } from '../../contexts/AuthContext';
 import './Courses.scss';
 // let courses = [
 //   {
@@ -53,35 +52,35 @@ import './Courses.scss';
 //   },
 // ];
 //Получаем массив с id курсов пользователя
-// let courses = [
-//   {
-//     courseId: '1',
-//     courseName: 'ООП',
-//     courseTeacher: 'Иванов Иван Иванович',
-//   },
-//   {
-//     courseId: '2',
-//     courseName: 'Анализ данных',
-//     courseTeacher: 'Петров Иван Иванович',
-//   },
-//   {
-//     courseId: '3',
-//     courseName: 'Алгебра',
-//     courseTeacher: 'Иванов Иван Иванович',
-//   },
-// ];
+let courses = [
+  {
+    courseId: '1',
+    courseName: 'ООП',
+    courseTeacher: 'Иванов Иван Иванович',
+  },
+  {
+    courseId: '2',
+    courseName: 'Анализ данных',
+    courseTeacher: 'Петров Иван Иванович',
+  },
+  {
+    courseId: '3',
+    courseName: 'Алгебра',
+    courseTeacher: 'Иванов Иван Иванович',
+  },
+];
 const Courses = () => {
-  const { getCourses, coursesData } = useAuth();
+  // const { getCourses, coursesData } = useAuth();
 
-  useEffect(() => {
-    getCourses();
-  }, []);
+  // useEffect(() => {
+  //   getCourses();
+  // }, []);
 
   return (
     <div className="courses">
       <h2>Ваши курсы:</h2>
       <div className="coursesWrapper">
-        {coursesData.map((element) => (
+        {courses.map((element) => (
           <CourseItem
             key={element.courseId}
             courseData={element}
