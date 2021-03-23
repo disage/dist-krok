@@ -24,6 +24,7 @@ const Login = observer(() => {
       setError('Failed to login');
     }
   };
+
   return (
     <div className="login">
       <form className="loginForm" onSubmit={handleSubmit}>

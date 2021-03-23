@@ -9,14 +9,14 @@ import Grades from './pages/Grades/Grades';
 import Login from './pages/Login/Login';
 import Sidebar from './сomponents/Sidebar/Sidebar';
 import auth from './store/auth';
-import { observer } from 'mobx-react-lite';
 
+import { observer } from 'mobx-react-lite';
 import './App.scss';
 
 const App = observer(() => {
   return (
     <BrowserRouter>
-      {!auth.isLoggined ? (
+      {auth.isLoggined ? (
         <Login />
       ) : (
         <div className="app">

@@ -150,7 +150,7 @@ const Sidebar = observer(() => {
         </NavLink>
       </nav>
       <div className="userInfo">
-        <span className="userName">Name{/* {currentUser && currentUser.email} */}</span>
+        <span className="userName">{auth.userLogin ? auth.userLogin : 'undefind'}</span>
         <span>ІПЗР-17к</span>
         <span>4 курс</span>
         <span className="exitAcc" onClick={handleLogout}>
