@@ -5,7 +5,7 @@ class Course {
 
   courses: ICourse[] = [];
   error:any= {};
-  subjects: ICourse = {_id: '', name:'', teacher:'', subjects: [{subjectId:'', subjectName:''}]};
+  subjects: ICourse = {_id: '', name:'', teacher:'', subjects: [{subjectId:'', subjectName:'', materials:[{materialId:'', materialName:'', materialContent: ''}]}]};
   constructor() {
     makeAutoObservable(this);
   }

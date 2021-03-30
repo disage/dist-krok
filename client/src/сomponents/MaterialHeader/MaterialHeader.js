@@ -7,10 +7,12 @@ const MaterialHeader = ({ subjName, materialData, isGrade, materialGrade }) => {
   return (
     <Link
       className="matItem"
-      to={{
-        pathname: '/material/' + materialData.materialId,
-        subjectParams: { subjName, materialData },
-      }}>
+      to={
+        {
+          // pathname: '/material/' + materialData.materialId,
+          // subjectParams: { subjName, materialData },
+        }
+      }>
       <p className="matMain">{isGrade ? materialData.materialName : subjName}</p>
       <div className="matSecondary">
         <div className="matSecondaryWrapper">

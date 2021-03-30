@@ -14,15 +14,7 @@ const Course:React.FC = observer(() => {
     CourseStore.getAllCourses(`/${courseId}`);
   }, []);
   
-  // const course: ICourse = {
-  //   _id: '1',
-  //   name: 'Eanglish for IT',
-  //   teacher: 'Popov Vitaly Sergiyovich',  
-  // };
-  
-  // const subjectItems = subjects.map((element) => (
-  //   <SubjectItem key={element.subjectId} subjectData={element} />
-  // ));
+
 
   // console.log(toJS(CourseStore.subjects.subjects)); 
   
