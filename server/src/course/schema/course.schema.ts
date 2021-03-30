@@ -9,23 +9,6 @@ export class Course {
   name: string;
   @Prop()
   teacher: string;
-  // @Prop()
-  // subjects: [
-  //   {
-  //    subjectId: string,
-  //    subjectName: string,
-  //   }
-  // ];
-  // @Prop()
-  // materials: [
-  //   {
-  //     subjectId: string,
-  //     materialId: string,
-  //     materialName: string, 
-  //     materialContent: string, 
-  //     isTest:boolean
-  //    }
-  // ]
 }
 
 export const CourseSchema = SchemaFactory.createForClass(Course);
