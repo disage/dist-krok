@@ -1,38 +1,37 @@
 import React, { useEffect } from 'react';
 import CourseItem from '../../сomponents/CourseItem/CourseItem';
 import SubjectItem from '../../сomponents/SubjectItem/SubjectItem';
-// import { ICourse } from '../../types/course';
 import CourseStore from '../../store/course';
 import { observer } from 'mobx-react-lite';
-import { toJS } from 'mobx';
 import './Course.scss';
-import {ICourse} from "../../types/course";
 
 const store = new CourseStore();
 
 const Course = observer(() => {
 
-  // useEffect(() => {
-  //   let courseId = window.location.pathname.split("/courses/")[1];
-  //   CourseStore.getAllCourses(`/${courseId}`);
-  // }, []);
+  let courseId:string = window.location.pathname.split("/courses/")[1];
+  let currentCourse:any = store.courses.find(course => course._id === courseId);
 
+  useEffect(() => {
+    store.loadSubjects(`/${courseId}`)
+  }, []);
 
   return (
     <div className="course">
-      {/*<CourseItem*/}
-      {/*  courseData={CourseStore.courses}*/}
-      {/*  secondaryTitle="Преподователь"*/}
-      {/*  path="/courses/"*/}
-      {/*  />*/}
-      {/*<div className="subjectWrapper">*/}
-      {/*  {toJS(CourseStore.subjects.subjects).length > 0*/}
-      {/*  ?*/}
-      {/*    toJS(CourseStore.subjects.subjects).map((element) => (*/}
-      {/*    <SubjectItem key={element.subjectId} subjectData={element} />))*/}
-      {/*  :*/}
-      {/*  'Темы отсутсвтуют'}*/}
-      {/*</div>*/}
+      <CourseItem
+      courseData={currentCourse}
+      secondaryTitle="Преподователь"
+      path="/courses/"
+     />
+     <div className="subjectWrapper">
+      {
+        store.subjects.length > 0
+      ?
+      store.subjects.map((element) => (
+     <SubjectItem key={element._id} subjectData={element} />))
+       :
+       'Темы отсутсвтуют'}
+      </div>
     </div>
   );
 });

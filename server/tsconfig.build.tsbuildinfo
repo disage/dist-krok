@@ -1552,7 +1552,7 @@
         "affectsGlobalScope": false
       },
       "./src/course/course.service.ts": {
-        "version": "bb41cc901bdcd622532f9d461ca93c8529d2e47bdf75435aecd324a27160f3ac",
+        "version": "2a44364f26a9bb360e5d91a549346d70961e6255e18405f89d1a4557ca2a7b05",
         "signature": "ec203f85bc502cfeb006b33c9382f7ba5b864a6aa89a5e9439af9fef65d5726b",
         "affectsGlobalScope": false
       },

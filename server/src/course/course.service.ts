@@ -30,11 +30,7 @@ export class CourseService {
     }
 
     async getOneCourse (id: ObjectId): Promise<Course>{
-       const course = await this.courseModel.findById(id).select("-materialContent");
-    //    let res = [];
-    //    for (let i = 0; i <course.materials.length; i++) {
-    //        res.push(materials.)
-    //    }
+       const course = await this.courseModel.findById(id);
        return course; 
     }
 }
