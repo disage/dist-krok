@@ -1547,7 +1547,7 @@
         "affectsGlobalScope": false
       },
       "./src/course/schema/course.schema.ts": {
-        "version": "4f4f2209fec2ce72823767cfd96a678e4a617ceba15eb4c3be2ab772583008aa",
+        "version": "61ba6471544dc7292f64ff5d6982605e5f2dbe7a974ceee85ef1c6478edbb5f9",
         "signature": "a386b02bc98602478a81c41ce7ed905d64c05e43d126b358714078bc80eb530d",
         "affectsGlobalScope": false
       },
@@ -1566,8 +1566,58 @@
         "signature": "426a31ac2d4b0af6239f6a93cbb2a2eace328722f114b33501322b2562dee220",
         "affectsGlobalScope": false
       },
+      "./src/subjects/dto/create-subject.dto.ts": {
+        "version": "e3218ff723f89902e392a40a0a7141a24ac4d739c2050dc229f3e7cc298295e2",
+        "signature": "f3647c0c298f103a7521abefab21ddd0b66dab0d169eda71924063ead86e1f8d",
+        "affectsGlobalScope": false
+      },
+      "./src/subjects/schema/subject.schema.ts": {
+        "version": "aa4debc59642b3c7de106ea1db5af1b211cbd51fdedbcde0377f0a529b3838a1",
+        "signature": "b7c6a3fb8c163720ec45b9767183a0f52f3adcb3d2608039bf2b596f27efa1e3",
+        "affectsGlobalScope": false
+      },
+      "./src/subjects/subject.service.ts": {
+        "version": "8d635835d7d397e327c7544394341bf3f37d2fb84fd5da56ca3514df4abf4a30",
+        "signature": "da7d7bac9e74071ffdfdc8fe0a1213535a2c4a8f9dca1253eb96cf4c0533fbe8",
+        "affectsGlobalScope": false
+      },
+      "./src/subjects/subject.controller.ts": {
+        "version": "27c09881f2283224015b9f784139e8c87b21bab754ed0484b404c44298403c3b",
+        "signature": "e185d3c81c9ef0b41218b96fa6ffa418abaa97f750e310901701d11c81350bd2",
+        "affectsGlobalScope": false
+      },
+      "./src/subjects/subject.module.ts": {
+        "version": "8ad186092c76e1ecaf293d4389ba9731c28e53090d6e5bdb0041c72ef419c657",
+        "signature": "afcf2dda642722b10351d51a2044ded7a0713c7c1b44d124b08176de1dacbfba",
+        "affectsGlobalScope": false
+      },
+      "./src/materials/dto/create-material.dto.ts": {
+        "version": "72bd7f32009ff2ed9c8fca58526c2948322d842f2bedd2c3afb6117efe09358e",
+        "signature": "c79c50a965e389bd66ff2a711f18f1b229972ab352ee5cffc39dede5a5a7bde1",
+        "affectsGlobalScope": false
+      },
+      "./src/materials/schema/material.schema.ts": {
+        "version": "bc892359f22d77a8c86d3b582889b51b420073bd389373aea633de7ea6b63f5d",
+        "signature": "1ebe589e1cf4538a45c117c1fe72b9c7035d04ef4332933865d14780f039c7c9",
+        "affectsGlobalScope": false
+      },
+      "./src/materials/material.service.ts": {
+        "version": "e79e844cf1d5d00499cdd205b2f1bdfc9114e38e07429f6bd20389bb82f9244b",
+        "signature": "548e0927871a9775c8a0b5e7a22897a7a796809cca0c35b7cebda47337e25b69",
+        "affectsGlobalScope": false
+      },
+      "./src/materials/material.controller.ts": {
+        "version": "05d37d36ff9080fcdbbfffef64aa64bcd5862c89e21e59de4f2e35a34093bd87",
+        "signature": "a8c8193ed9040312f8a407e9303f17e7bfb371056907a05230b5283f090eed0f",
+        "affectsGlobalScope": false
+      },
+      "./src/materials/material.module.ts": {
+        "version": "5d64b66fc62f0a0aadfeda2212f6654bd6185a084fdb07b4552152fd424dc4d8",
+        "signature": "358c422ebd8af6630d642bcea3e4b8911a0b4fff460f72fbac9f6b5b0d183db0",
+        "affectsGlobalScope": false
+      },
       "./src/app.module.ts": {
-        "version": "54803bc14df96c5720486fa90aa3939199d6dadb01734b3f11580eedf6a42a9f",
+        "version": "ebc9dcd3e4a2303a9a9eb524bba42ed137bf8119e70a0dc412ef852e19b8388e",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
@@ -1761,64 +1811,14 @@
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
-      "./src/auth/auth.service.ts": {
-        "version": "c8d03f46502e39e31a1e4bc19868a0a76325037e7a687e771d1b25364d65f3ea",
-        "signature": "a009e0c36ca44224a7a77b4b3f728b4dbc03b90555c8b1dcd4d69e0c029ef3e9",
-        "affectsGlobalScope": false
-      },
       "./src/auth/auth.module.ts": {
-        "version": "3defd54baf32a291e4c94b595f89bd5cc185a2372d6bc1dfe4a572f5af674d1b",
-        "signature": "2e5d258cf85349b02b015c3f1b8873c152d182c3819a7ccc3aff16fc3037a5fc",
+        "version": "f6a19824e0680d12e1cf31a454c562eff1a4973ae69792adaf5110019a550a7e",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
-      "./src/materials/dto/create-material.dto.ts": {
-        "version": "72bd7f32009ff2ed9c8fca58526c2948322d842f2bedd2c3afb6117efe09358e",
-        "signature": "c79c50a965e389bd66ff2a711f18f1b229972ab352ee5cffc39dede5a5a7bde1",
-        "affectsGlobalScope": false
-      },
-      "./src/materials/schema/material.schema.ts": {
-        "version": "bc892359f22d77a8c86d3b582889b51b420073bd389373aea633de7ea6b63f5d",
-        "signature": "1ebe589e1cf4538a45c117c1fe72b9c7035d04ef4332933865d14780f039c7c9",
-        "affectsGlobalScope": false
-      },
-      "./src/materials/material.service.ts": {
-        "version": "e79e844cf1d5d00499cdd205b2f1bdfc9114e38e07429f6bd20389bb82f9244b",
-        "signature": "548e0927871a9775c8a0b5e7a22897a7a796809cca0c35b7cebda47337e25b69",
-        "affectsGlobalScope": false
-      },
-      "./src/materials/material.controller.ts": {
-        "version": "05d37d36ff9080fcdbbfffef64aa64bcd5862c89e21e59de4f2e35a34093bd87",
-        "signature": "a8c8193ed9040312f8a407e9303f17e7bfb371056907a05230b5283f090eed0f",
-        "affectsGlobalScope": false
-      },
-      "./src/materials/material.module.ts": {
-        "version": "782da58793218f9655f731f52203ff3b25388f0cd4411e96451f96bd0a6cb848",
-        "signature": "426a31ac2d4b0af6239f6a93cbb2a2eace328722f114b33501322b2562dee220",
-        "affectsGlobalScope": false
-      },
-      "./src/subjects/dto/create-subject.dto.ts": {
-        "version": "5d4c401172c99de9b1e07bf26b8915da3486b56f035988b3fbdb2e2fa2036be9",
-        "signature": "f3647c0c298f103a7521abefab21ddd0b66dab0d169eda71924063ead86e1f8d",
-        "affectsGlobalScope": false
-      },
-      "./src/subjects/schema/subject.schema.ts": {
-        "version": "2f5575ba630519b0a2d661d902973262959b11d3e6fca5b7d74fd33d1ebb2219",
-        "signature": "a7dfdc5e9391a7151add8b4ef773b77168e22321189fc484275cd94b586d45c5",
-        "affectsGlobalScope": false
-      },
-      "./src/subjects/subject.service.ts": {
-        "version": "290cfcd93d3fb6876b659eb86f983a806e7f115f170fd6d9a6def83d6c9e3e3a",
-        "signature": "336166c0fab4797918983261f9eab92d1edcf7f1ba0324b273ae72101d3fd4b7",
-        "affectsGlobalScope": false
-      },
-      "./src/subjects/subject.controller.ts": {
-        "version": "97073aa01100785b6fe962ceaa6785e5c27aa1ee06366a6127f88d15cc1addf7",
-        "signature": "2885f9245d9530e142adcb116d2ea3ae86799f5ddfedb3b4720522134a1e9e35",
-        "affectsGlobalScope": false
-      },
-      "./src/subjects/subject.module.ts": {
-        "version": "6543485fb2122958d6df8bf889b86213768121be77daadabb735703d7bbff602",
-        "signature": "426a31ac2d4b0af6239f6a93cbb2a2eace328722f114b33501322b2562dee220",
+      "./src/auth/auth.service.ts": {
+        "version": "b1a798ca1ca1812463ada21df37aba73e4334dc495f048f5e95aacb01936e79b",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/anymatch/index.d.ts": {
@@ -3667,14 +3667,9 @@
       "./src/app.module.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@nestjs/mongoose/index.d.ts",
-        "./src/course/course.module.ts"
-      ],
-      "./src/auth/auth.module.ts": [
-        "./node_modules/@nestjs/common/index.d.ts",
-        "./src/auth/auth.service.ts"
-      ],
-      "./src/auth/auth.service.ts": [
-        "./node_modules/@nestjs/common/index.d.ts"
+        "./src/course/course.module.ts",
+        "./src/materials/material.module.ts",
+        "./src/subjects/subject.module.ts"
       ],
       "./src/course/course.controller.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
@@ -3730,7 +3725,8 @@
       ],
       "./src/subjects/schema/subject.schema.ts": [
         "./node_modules/@nestjs/mongoose/index.d.ts",
-        "./node_modules/mongoose/index.d.ts"
+        "./node_modules/mongoose/index.d.ts",
+        "./src/course/schema/course.schema.ts"
       ],
       "./src/subjects/subject.controller.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
@@ -5214,9 +5210,6 @@
       "./node_modules/rxjs/internal/util/pipe.d.ts": [
         "./node_modules/rxjs/internal/types.d.ts"
       ],
-      "./src/auth/auth.service.ts": [
-        "./src/users/users.service.ts"
-      ],
       "./src/course/course.controller.ts": [
         "./node_modules/mongoose/index.d.ts",
         "./src/course/course.service.ts",
@@ -5242,13 +5235,18 @@
         "./node_modules/mongoose/index.d.ts"
       ],
       "./src/subjects/schema/subject.schema.ts": [
-        "./node_modules/mongoose/index.d.ts"
+        "./node_modules/mongoose/index.d.ts",
+        "./src/course/schema/course.schema.ts"
       ],
       "./src/subjects/subject.controller.ts": [
+        "./node_modules/mongoose/index.d.ts",
+        "./src/subjects/dto/create-subject.dto.ts",
+        "./src/subjects/schema/subject.schema.ts",
         "./src/subjects/subject.service.ts"
       ],
       "./src/subjects/subject.service.ts": [
         "./node_modules/mongoose/index.d.ts",
+        "./src/subjects/dto/create-subject.dto.ts",
         "./src/subjects/schema/subject.schema.ts"
       ],
       "../../../node_modules/querystring/index.d.ts": [
@@ -5679,32 +5677,8 @@
       "./node_modules/typescript/lib/lib.scripthost.d.ts",
       "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
       "./src/app.module.ts",
-      [
-        "./src/auth/auth.module.ts",
-        [
-          {
-            "file": "./src/auth/auth.module.ts",
-            "start": 117,
-            "length": 23,
-            "messageText": "Cannot find module '../users/users.module' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
-      [
-        "./src/auth/auth.service.ts",
-        [
-          {
-            "file": "./src/auth/auth.service.ts",
-            "start": 75,
-            "length": 24,
-            "messageText": "Cannot find module '../users/users.service' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
+      "./src/auth/auth.module.ts",
+      "./src/auth/auth.service.ts",
       "./src/constants.ts",
       "./src/course/course.controller.ts",
       "./src/course/course.module.ts",

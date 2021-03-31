@@ -12,4 +12,4 @@ controllers: [SubjectController],
 providers: [SubjectService],
 })
 
-export class CourseModule{}
+export class SubjectModule{}

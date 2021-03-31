@@ -12,4 +12,4 @@ controllers: [MaterialController],
 providers: [MaterialService],
 })
 
-export class CourseModule{}
+export class MaterialModule{}

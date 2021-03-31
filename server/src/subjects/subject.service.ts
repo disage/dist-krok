@@ -1,36 +1,32 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Model, ObjectId } from "mongoose";
+// import { Model, ObjectId } from "mongoose";
+import * as mongoose from  'mongoose';
 import { CreateSubjectDto } from "./dto/create-subject.dto";
 import { Subject, SubjectDocument } from "./schema/subject.schema";
 
 @Injectable()
 export class SubjectService {
 
-    constructor(@InjectModel(Subject.name) private courseModel: Model<SubjectDocument>) {}
+    constructor(@InjectModel(Subject.name) private subjectModel: mongoose.Model<SubjectDocument>) {}
 
-    // async createCourse (dto: CreateCourseDto): Promise<Course>  {
-    //     const course = await this.courseModel.create({...dto});
-    //     return course;
-    // }
+    async getAllSubjects(): Promise<Subject[]>{
+        const subject = await this.subjectModel.find();
+        return subject;
+    }
+    async getSubjects(id: any): Promise<Subject[]>{
+        const subject = await this.subjectModel.find({'courseId': id});
+        return subject;
+    }
 
-    // async editCourse (dto: EditCourseDto, id:ObjectId): Promise<Course>  {
-    //     const editedCourse = await this.courseModel.findByIdAndUpdate(id, dto, { new: true });
-    //     return editedCourse;
-    // }
-    
-    // async deleteCourse (id: ObjectId): Promise<ObjectId> {
-    //     const course = await this.courseModel.findByIdAndDelete(id);
-    //     return course._id;
-    // }
-    
-    // async getAllCourses(): Promise<Course[]>{
-    //      const courses = await this.courseModel.find({},{name: 1, teacher: 1});
-    //      return courses;
-    // }
+    async createSubject(dto: CreateSubjectDto): Promise<Subject>{
+        const subject = await this.subjectModel.create({...dto});
+        return subject;
+    }
 
-    // async getOneCourse (id: ObjectId): Promise<Course>{
-    //    const course = await this.courseModel.findById(id).select("-materialContent");
-    //    return course; 
-    // }
+    async deleteSubject (id: mongoose.Schema.Types.ObjectId): Promise<mongoose.Schema.Types.ObjectId> {
+        const course = await this.subjectModel.findByIdAndDelete(id);
+        return course._id;
+    }
+
 }
