@@ -6,6 +6,7 @@
 /data
 
 # Logs
+/client/.eslintcache
 logs
 *.log
 npm-debug.log*

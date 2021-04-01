@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CourseItem from '../../сomponents/CourseItem/CourseItem';
-// import { ICourse, ICourseState } from '../../types/course';
 import CourseStore from '../../store/course';
 import { observer } from 'mobx-react-lite';
-import { toJS } from 'mobx';
 import './Courses.scss';
 
+const store = new CourseStore();
+
 const Courses = observer((props) => {
-  // const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
-    CourseStore.getAllCourses('/');
-  }, []);
-
-  // console.log(toJS(CourseStore.courses));
-
   const [formStatus, setFormStatus] = useState(false);
 
   let formStatusHandler = (status) => {
@@ -23,7 +15,6 @@ const Courses = observer((props) => {
 
   return (
     <>
-      {/* {console.log(toJS(Course.courses))} */}
       {formStatus ? (
         <div className="courses">
           <div className="coursesHeader">
@@ -50,12 +41,12 @@ const Courses = observer((props) => {
             </div>
           </div>
           <div className="coursesWrapper">
-            {toJS(CourseStore.courses).map((course) => (
+            {store.courses.map((course) => (
               <CourseItem
                 key={course._id}
                 courseData={course}
                 secondaryTitle="Преподователь"
-                path="/courses/"
+                path={`/courses/${course._id}`}
               />
             ))}
           </div>

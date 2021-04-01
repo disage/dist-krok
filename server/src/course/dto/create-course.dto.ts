@@ -1,10 +1,12 @@
 export class CreateCourseDto {
     readonly name:string;
     readonly teacher:string;
+    // readonly subjetcs:[];
+
 }
 
-// export class CreateSubjectDto {
-//     readonly subjectId;
-//     readonly subjectName;
-//     readonly ObjectId;
-// }
+export class EditCourseDto {
+    readonly name:string;
+    readonly teacher:string;
+    readonly subjetcs:[];
+}

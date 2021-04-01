@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { ObjectId } from "mongoose";
 import { CourseService } from "./course.service";
-import { CreateCourseDto } from "./dto/create-course.dto";
+import { CreateCourseDto, EditCourseDto } from "./dto/create-course.dto";
 
 @Controller('/courses')
 export class CoursesController {
@@ -12,7 +12,7 @@ export class CoursesController {
          return this.courseService.createCourse(dto);
     }
     @Put(':id')
-    editCourse(@Body() dto: CreateCourseDto, @Param('id') id: ObjectId){
+    editCourse(@Body() dto: EditCourseDto, @Param('id') id: ObjectId){
         return this.courseService.editCourse(dto, id);
     }
     @Delete(':id')
