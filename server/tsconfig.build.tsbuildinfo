@@ -2216,6 +2216,9 @@
       "allowSyntheticDefaultImports": true,
       "target": 4,
       "sourceMap": true,
+      "outDir": "./dist",
+      "baseUrl": "./",
+      "rootDir": "./src",
       "incremental": true,
       "jsx": 2,
       "configFilePath": "./tsconfig.build.json"

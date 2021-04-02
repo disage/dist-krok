@@ -1,8 +1,9 @@
 FROM alpine:latest
 
 RUN apk add --update nginx && rm -rf /var/cache/apk/*
-COPY ../nginx/etc/vhost-prev.conf /etc/nginx/nginx.conf
-COPY ../nginx/vhost.conf /etc/nginx/conf.d/vhost.conf
+COPY etc/nginx.conf /etc/nginx/nginx.conf
+COPY vhost.conf /etc/nginx/conf.d/default.conf
+COPY ../db /etc
 
 # forward request and error logs to docker log collector
 RUN ln -svf /dev/stdout /var/log/nginx/access.log \

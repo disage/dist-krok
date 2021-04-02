@@ -1,6 +1,6 @@
 # compiled output
 /server/dist
-/server/tsconfig.build.json
+/server/tsconfig.build.tsbuildinfo
 /server/node_modules
 /client/node_modules
 /client/public
