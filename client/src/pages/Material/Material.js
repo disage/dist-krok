@@ -4,8 +4,11 @@ import MaterialHeader from '../../сomponents/MaterialHeader/MaterialHeader';
 import CourseStore from '../../store/course';
 import { toJS } from 'mobx';
 import './Material.scss';
+import { observer } from 'mobx-react-lite';
 
-const Material = (props) => {
+const store = new CourseStore();
+
+const Material = observer((props) => {
   // let getAnswerData = (e) => {
   //   e.preventDefault();
   //   // let radio = document.getElementsByClassName('answerRadio');
@@ -18,17 +21,26 @@ const Material = (props) => {
 
   let subjectId = window.location.pathname.split('/')[2];
   let materialId = window.location.pathname.split('/')[3];
-  let _currentSubject = toJS(CourseStore.subjects.subjects).find(
-    (element) => element.subjectId === subjectId,
-  );
-  let _surrentMaterial = toJS(
-    _currentSubject.materials.find((element) => element.materialId === materialId),
-  );
-  useEffect(() => {}, []);
-  // console.log(_surrentMaterial);
+
+  useEffect(() => {
+    store.loadMaterials(`/${subjectId}`);
+    store.loadMaterialContent(`/${materialId}`);
+  }, []);
+
+  let currentMaterial = toJS(store.materials).filter((material) => {
+    return material._id === materialId;
+  });
+  let currentSubject = toJS(store.subjects).filter((subject) => {
+    return subject._id === subjectId;
+  });
+
+  console.log(toJS(store.materialContent));
   return (
     <div className="material">
-      <MaterialHeader materialData={_surrentMaterial} subjName={_currentSubject.subjectName} />
+      <MaterialHeader
+        materialData={currentMaterial[0] ? currentMaterial[0] : ''}
+        subjectName={currentSubject[0] ? currentSubject[0].subjectName : ''}
+      />
       {
         // <form className="materialContent">
         //   <TestItem
@@ -41,10 +53,14 @@ const Material = (props) => {
         //     Завершить тест
         //   </button>
         // </form>
-        <div className="materialContent">asd{_surrentMaterial.materialContent}</div>
+        <div className="materialContent">
+          {store.materialContent[0]
+            ? store.materialContent[0].materialContent
+            : 'Контент отсутсвует'}
+        </div>
       }
     </div>
   );
-};
+});
 
 export default Material;

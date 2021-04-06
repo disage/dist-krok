@@ -1,31 +1,31 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { ObjectId } from "mongoose";
 import { MaterialService } from "./material.service";
-import { CreateMaterialDto } from "./dto/create-material.dto";
+import { CreateMaterialDto, EditMaterialDto } from "./dto/create-material.dto";
 
-@Controller('/material')
+@Controller('/materials')
 export class MaterialController {
 
     constructor(private materialService: MaterialService ) {}
-    // @Post()
-    //  createCourse(@Body() dto: CreateCourseDto) {
-    //      return this.courseService.createCourse(dto);
-    // }
-    // @Put(':id')
-    // editCourse(@Body() dto: EditCourseDto, @Param('id') id: ObjectId){
-    //     return this.courseService.editCourse(dto, id);
-    // }
-    // @Delete(':id')
-    //  deleteCourse (@Param('id') id: ObjectId) {
-    //     return this.courseService.deleteCourse(id);
 
-    // }
-    // @Get()
-    //  getAllCourses (){
-    //     return this.courseService.getAllCourses();
-    // }
-    // @Get(':id')
-    // getOneCourse (@Param('id') id: ObjectId){
-    //     return this.courseService.getOneCourse(id);
-    // }
+    @Get(':id')
+    getMaterials(@Param('id') id: any){
+        return this.materialService.getMaterials(id);
+    }
+
+    @Post()
+    createMaterial(@Body() dto: CreateMaterialDto) {
+        return this.materialService.createMaterial(dto);
+    }
+
+    @Get()
+    getAllMaterials(){
+        return this.materialService.getAllMaterials();
+    }
+    
+    @Put(':id')
+    editCourse(@Body() dto: EditMaterialDto, @Param('id') id: any){
+        return this.materialService.editMaterial(dto, id);
+    }
+
 }

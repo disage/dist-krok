@@ -3,20 +3,17 @@ import { Link } from 'react-router-dom';
 
 import './MaterialHeader.scss';
 
-const MaterialHeader = ({ subjName, materialData, isGrade, materialGrade }) => {
+const MaterialHeader = ({ subjectName, materialData }) => {
   return (
     <Link
       className="matItem"
-      to={
-        {
-          // pathname: '/material/' + materialData.materialId,
-          // subjectParams: { subjName, materialData },
-        }
-      }>
-      <p className="matMain">{isGrade ? materialData.materialName : subjName}</p>
+      to={{
+        pathname: '/courses/',
+      }}>
+      <p className="matMain">{subjectName}</p>
       <div className="matSecondary">
         <div className="matSecondaryWrapper">
-          <b>{isGrade ? materialGrade : materialData.materialName}</b>
+          <b>{materialData.materialName}</b>
         </div>
       </div>
     </Link>

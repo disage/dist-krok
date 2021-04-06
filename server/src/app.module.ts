@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CourseModule } from './course/course.module';
 import { SubjectModule } from './subjects/subject.module';
 import { MaterialModule } from './materials/material.module';
+import { MaterialContentModule } from './materialContent/materialContent.module';
 
 @Module ({
     imports:[    
@@ -11,6 +12,7 @@ import { MaterialModule } from './materials/material.module';
         CourseModule,
         SubjectModule,
         MaterialModule,
+        MaterialContentModule,
     ],
 })
 

@@ -15,7 +15,6 @@ const Course = observer(() => {
   useEffect(() => {
     store.loadSubjects(`/${courseId}`)
   }, []);
-
   return (
     <div className="course">
       <CourseItem
