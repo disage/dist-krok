@@ -7,6 +7,10 @@
   padding: 30px;
   box-sizing: border-box;
   min-height: 100vh;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 h2 {
   font-family: var(--montserrat);

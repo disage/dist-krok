@@ -17,7 +17,6 @@ const CourseItem: React.FC<CourseItemProps> = observer(({courseData,secondaryTit
   let courseId:string = window.location.pathname.split("/courses/")[1] ;
   let currentCourse:any = store.courses.find(course => course._id === courseId) ? store.courses.find(course => course._id === courseId) : store.courses;  
 
-  // const [CourseItemData, setCourseItemData] = useState({name:'', teacher:''})
 
   return (
     <Link
@@ -26,7 +25,7 @@ const CourseItem: React.FC<CourseItemProps> = observer(({courseData,secondaryTit
         pathname: path,
 
       }}>
-      <p className="courseMain">{currentCourse.name ? currentCourse.name : courseData ? courseData.name : 'Название курса'}</p>
+      <p className="courseMain" >{currentCourse.name ? currentCourse.name : courseData ? courseData.name : 'Название курса'}</p>
       <div className="courseSecondary">
         <div className="courseSecondaryWrapper">
           <b>{secondaryTitle}</b>
