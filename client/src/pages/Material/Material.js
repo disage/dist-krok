@@ -34,7 +34,7 @@ const Material = observer((props) => {
     return subject._id === subjectId;
   });
 
-  console.log(toJS(store.materialContent));
+  // console.log(toJS(store.materialContent));
   return (
     <div className="material">
       <MaterialHeader

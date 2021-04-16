@@ -6,6 +6,7 @@ export default class CourseStore {
   subjects: ISubject[] = [];
   materials: IMaterial[] = [];
   materialContent: IMaterial[] = []
+  response: any = {};
 
   constructor(url: string = '') {
     makeAutoObservable(this)
@@ -43,6 +44,22 @@ export default class CourseStore {
       .then(res => res.json())
       .then(json => {
         this.materialContent = json
+      })
+  }
+
+  changeData(url:string, data:any, method:string) {
+    fetch(url, {
+      method: method, 
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+    },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(json => {
+        this.response = json
+        // console.log(toJS(this.response))
       })
   }
 }
