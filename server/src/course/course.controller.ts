@@ -1,31 +1,35 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { ObjectId } from "mongoose";
-import { CourseService } from "./course.service";
-import { CreateCourseDto, EditCourseDto } from "./dto/create-course.dto";
+import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
+import {CourseService} from "./course.service";
+import {CreateCourseDto} from "./dto/create-course.dto";
 
 @Controller('/courses')
 export class CoursesController {
 
-    constructor(private courseService: CourseService ) {}
-    @Post()
-     createCourse(@Body() dto: CreateCourseDto) {
-         return this.courseService.createCourse(dto);
-    }
-    @Put(':id')
-    editCourse(@Body() dto: EditCourseDto, @Param('id') id: ObjectId){
-        return this.courseService.editCourse(dto, id);
-    }
-    @Delete(':id')
-     deleteCourse (@Param('id') id: ObjectId) {
-        return this.courseService.deleteCourse(id);
+  constructor(private readonly courseService: CourseService) {
+  }
 
-    }
-    @Get()
-     getAllCourses (){
-        return this.courseService.getAllCourses();
-    }
-    @Get(':id')
-    getOneCourse (@Param('id') id: ObjectId){
-        return this.courseService.getOneCourse(id);
-    }
+  @Post('create')
+  async createCourse(@Body() dto: CreateCourseDto) {
+    return await this.courseService.createCourse(dto);
+  }
+
+  @Put(':id')
+  async editCourse(@Body() dto: CreateCourseDto, @Param('id') id: string) {
+    return await this.courseService.editCourse(dto, id);
+  }
+
+  @Delete(':id')
+  async deleteCourse(@Param('id') id: string) {
+    return await this.courseService.deleteCourse(id);
+  }
+
+  @Get()
+  async getAllCourses() {
+    return await this.courseService.getAllCourses();
+  }
+
+  @Get(':id')
+  async getOneCourse(@Param('id') id: string) {
+    return await this.courseService.getOneCourse(id);
+  }
 }

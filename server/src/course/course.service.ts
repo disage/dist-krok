@@ -1,36 +1,31 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model, ObjectId } from "mongoose";
-import { CreateCourseDto, EditCourseDto } from "./dto/create-course.dto";
-import { Course, CourseDocument } from "./schema/course.schema";
+import { CreateCourseDto } from "./dto/create-course.dto";
+import {CourseModel} from "./course.model";
+import {ModelType, DocumentType} from "@typegoose/typegoose/lib/types";
+import {InjectModel} from "nestjs-typegoose";
 
 @Injectable()
 export class CourseService {
 
-    constructor(@InjectModel(Course.name) private courseModel: Model<CourseDocument>) {}
+    constructor(@InjectModel(CourseModel) private courseModel: ModelType<CourseModel>) {}
 
-    async createCourse (dto: CreateCourseDto): Promise<Course>  {
-        const course = await this.courseModel.create({...dto});
-        return course;
-    }
-
-    async editCourse (dto: EditCourseDto, id:ObjectId): Promise<Course>  {
-        const editedCourse = await this.courseModel.findByIdAndUpdate(id, dto, { new: true });
-        return editedCourse;
-    }
-    
-    async deleteCourse (id: ObjectId): Promise<ObjectId> {
-        const course = await this.courseModel.findByIdAndDelete(id);
-        return course._id;
-    }
-    
-    async getAllCourses(): Promise<Course[]>{
-         const courses = await this.courseModel.find({},{name: 1, teacher: 1});
-         return courses;
+    async createCourse (dto: CreateCourseDto): Promise<DocumentType<CourseModel>>  {
+        return this.courseModel.create(dto);
     }
 
-    async getOneCourse (id: ObjectId): Promise<Course>{
-       const course = await this.courseModel.findById(id);
-       return course; 
+    async editCourse (dto: CreateCourseDto, id:string): Promise<DocumentType<CourseModel> | null>  {
+        return this.courseModel.findByIdAndUpdate(id, dto, { new: true }).exec();
+    }
+
+    async deleteCourse (id: string): Promise<DocumentType<CourseModel> | null> {
+        return this.courseModel.findByIdAndDelete(id).exec();
+    }
+
+    async getAllCourses(): Promise<DocumentType<CourseModel>[]>{
+         return this.courseModel.find({},{name: 1, teacher: 1}).exec();
+    }
+
+    async getOneCourse (id: string): Promise<DocumentType<CourseModel>>{
+       return this.courseModel.findById(id).exec();
     }
 }

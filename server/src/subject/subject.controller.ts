@@ -1,18 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { ObjectId } from "mongoose";
 import { SubjectService } from "./subject.service";
 import { CreateSubjectDto } from "./dto/create-subject.dto";
 
-@Controller('/subjects')
+@Controller('/subject')
 export class SubjectController {
 
-    constructor(private subjectService: SubjectService ) {}
+    constructor(private readonly subjectService: SubjectService ) {}
 
-
-//     @Get(':id')
-//     getSubjects (@Param('id') id: ObjectId){
-//        return this.subjectService.getSubjects(id);
-//    }
     @Get()
     getAllSubjects (){
         return this.subjectService.getAllSubjects();
@@ -24,7 +18,7 @@ export class SubjectController {
     }
 
     @Delete(':id')
-    deleteCourse (@Param('id') id: ObjectId) {
+    deleteCourse (@Param('id') id: string) {
         return this.subjectService.deleteSubject(id);
 
     }
@@ -32,12 +26,4 @@ export class SubjectController {
     getSubjects (@Param('id') id: any){
         return this.subjectService.getSubjects(id);
     }
-
-    // @Put(':id')
-    // editCourse(@Body() dto: EditCourseDto, @Param('id') id: ObjectId){
-    //     return this.courseService.editCourse(dto, id);
-    // }
-
-
-
 }

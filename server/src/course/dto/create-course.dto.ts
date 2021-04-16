@@ -1,12 +1,10 @@
+import {IsString} from "class-validator";
+import {Types} from "mongoose";
+
 export class CreateCourseDto {
-    readonly name:string;
-    readonly teacher:string;
-    // readonly subjetcs:[];
+    @IsString()
+    name: string;
 
-}
-
-export class EditCourseDto {
-    readonly name:string;
-    readonly teacher:string;
-    readonly subjetcs:[];
+    @IsString()
+    teacherId: Types.ObjectId;
 }

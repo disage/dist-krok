@@ -1,15 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { ObjectId } from "mongoose";
 import { MaterialService } from "./material.service";
 import { CreateMaterialDto, EditMaterialsDto } from "./dto/create-material.dto";
 
-@Controller('/materials')
+@Controller('/material')
 export class MaterialController {
 
     constructor(private materialService: MaterialService ) {}
 
     @Get(':id')
-    getMaterials(@Param('id') id: any){
+    getMaterials(@Param('id') id: string){
         return this.materialService.getMaterials(id);
     }
 
@@ -24,7 +23,7 @@ export class MaterialController {
     }
 
     @Put(':id')
-    editCourse(@Body() dto: EditMaterialsDto, @Param('id') id: any){
+    editCourse(@Body() dto: EditMaterialsDto, @Param('id') id: string){
         return this.materialService.editMaterial(dto, id);
     }
 
