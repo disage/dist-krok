@@ -12,6 +12,9 @@ services:
     image: mongo
     container_name: mongo
     restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
       - ./data/db/mongo:/data/db
     ports:
