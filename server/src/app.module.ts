@@ -10,6 +10,8 @@ import {AuthModule} from "./auth/auth.module";
 import {UserModule} from "./user/user.module";
 import {TokenModule} from "./token/token.module";
 import {MailModule} from "./mail/mail.module";
+import { GroupService } from './group/group.service';
+import { GroupModule } from './group/group.module';
 
 @Module ({
     imports:[
@@ -25,9 +27,11 @@ import {MailModule} from "./mail/mail.module";
         AuthModule,
         UserModule,
         TokenModule,
-        MailModule
+        MailModule,
+        GroupModule
         // MaterialContentModule,
     ],
+    providers: [],
 })
 
 export class AppModule {}
