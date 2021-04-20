@@ -9,4 +9,7 @@ export class CourseModel extends TimeStamps{
 
   @prop()
   teacherId: Types.ObjectId;
+
+  @prop()
+  groupsId: Types.ObjectId[]
 }

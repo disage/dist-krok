@@ -33,8 +33,8 @@ export class AuthService {
   private readonly clientAppUrl: string;
 
   constructor(
-    private readonly jwtService: JwtService,
     private readonly userService: UserService,
+    private readonly jwtService: JwtService,
     private readonly tokenService: TokenService,
     private readonly configService: ConfigService,
     private readonly mailService: MailService,

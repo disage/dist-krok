@@ -1,4 +1,4 @@
-import {IsString} from "class-validator";
+import {IsArray, IsString} from "class-validator";
 import {Types} from "mongoose";
 
 export class CreateCourseDto {
@@ -7,4 +7,8 @@ export class CreateCourseDto {
 
     @IsString()
     teacherId: Types.ObjectId;
+
+    @IsArray()
+    @IsString()
+    groupsId: Types.ObjectId[];
 }
