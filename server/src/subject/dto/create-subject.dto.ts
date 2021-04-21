@@ -1,5 +1,5 @@
 
 export class CreateSubjectDto {
-    readonly subjectId: string;
+    readonly courseId: string;
     readonly subjectName: string;
 }

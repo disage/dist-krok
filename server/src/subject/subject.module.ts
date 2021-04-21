@@ -3,6 +3,8 @@ import {SubjectController} from "./subject.controller";
 import {SubjectService} from "./subject.service";
 import {TypegooseModule} from "nestjs-typegoose";
 import {SubjectModel} from "./subject.model";
+import {APP_GUARD} from "@nestjs/core";
+import {JwtAuthGuard} from "../auth/Guards/jwt.auth.guard";
 
 @Module({
   imports: [
@@ -16,7 +18,7 @@ import {SubjectModel} from "./subject.model";
     ])
   ],
   controllers: [SubjectController],
-  providers: [SubjectService],
+  providers: [SubjectService]
 })
 
 export class SubjectModule {

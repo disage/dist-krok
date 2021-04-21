@@ -23,7 +23,7 @@ export class SubjectController {
 
     }
     @Get(':id')
-    getSubjects (@Param('id') id: any){
+    getSubjects (@Param('id') id: string){
         return this.subjectService.getSubjects(id);
     }
 }
