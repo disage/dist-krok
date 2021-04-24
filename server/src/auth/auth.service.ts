@@ -48,7 +48,7 @@ export class AuthService {
       throw new ConflictException('This email has been registered');
     }
     const user = await this.userService.create(createUserDto, [roleEnum.user]);
-    await this.sendConfirmation(user);
+    // await this.sendConfirmation(user);
     return user;
   }
 
