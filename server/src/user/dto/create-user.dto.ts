@@ -1,10 +1,15 @@
 import { IsEmail, IsString, IsNotEmpty, Matches, IsOptional, IsEnum } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import {roleEnum} from "../enums/role.enum";
+import {statusEnum} from "../enums/status.enum";
 
 export class CreateUserDto {
     @ApiProperty()
     @IsEmail()
     readonly email: string;
+
+    @IsEnum(statusEnum)
+    readonly status: statusEnum;
 
     @ApiProperty()
     @IsString()
@@ -21,7 +26,8 @@ export class CreateUserDto {
     @IsOptional()
     readonly phone: string;
 
-    readonly roles: string[];
+    @IsEnum(roleEnum)
+    readonly roles: roleEnum;
 
     @IsString()
     @IsNotEmpty()

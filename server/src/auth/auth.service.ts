@@ -47,7 +47,7 @@ export class AuthService {
     if (find) {
       throw new ConflictException('This email has been registered');
     }
-    const user = await this.userService.create(createUserDto, [roleEnum.user]);
+    const user = await this.userService.create(createUserDto, roleEnum.user);
     // await this.sendConfirmation(user);
     return user;
   }
@@ -97,7 +97,7 @@ export class AuthService {
 
   async confirm(token: string): Promise<IUser> {
     const data = await this.verifyToken(token);
-    const user = await this.userService.find(data._id);
+    const user = await this.userService.findById(data._id);
 
     await this.tokenService.delete(data._id, token);
 

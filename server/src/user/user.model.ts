@@ -23,7 +23,7 @@ export class UserModel{
   groupId: Types.ObjectId;
 
   @Prop({enum: roleEnum, type: String})
-  roles: roleEnum[];
+  roles: roleEnum;
 
   @Prop({ required: true })
   password: string;
