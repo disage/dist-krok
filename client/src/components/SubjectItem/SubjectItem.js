@@ -1,9 +1,7 @@
 import React from 'react';
 import './SubjectItem.scss';
 import MaterialItem from '../MaterialItem/MaterialItem';
-import CourseStore from '../../store/course';
-
-import { toJS } from 'mobx';
+// import CourseStore from '../../store/course';
 
 const store = new CourseStore();
 

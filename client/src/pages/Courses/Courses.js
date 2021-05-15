@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import CourseItem from '../../сomponents/CourseItem/CourseItem';
-import CourseStore from '../../store/course';
-import { observer } from 'mobx-react-lite';
 import './Courses.scss';
 import AdminForm from '../../сomponents/AdminForm/AdminForm';
 
-const store = new CourseStore();
+const store = '';
 
-const Courses = observer((props) => {
+const Courses = (props) => {
   const [formStatus, setFormStatus] = useState(false);
   const [editStatus, setEditStatus] = useState(false);
   const [formProps, setFormProps] = useState({ title: '', method: '', url: '', id: '' });
@@ -89,5 +87,5 @@ const Courses = observer((props) => {
       )}
     </>
   );
-});
+};
 export default Courses;

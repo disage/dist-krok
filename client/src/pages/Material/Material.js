@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import MaterialHeader from '../../сomponents/MaterialHeader/MaterialHeader';
 // import TestItem from '../../сomponents/TestItem/TestItem';
-import CourseStore from '../../store/course';
-import { toJS } from 'mobx';
+// import CourseStore from '../../store/course';
 import './Material.scss';
-import { observer } from 'mobx-react-lite';
 
 const store = new CourseStore();
 
-const Material = observer((props) => {
+const Material = (props) => {
   // let getAnswerData = (e) => {
   //   e.preventDefault();
   //   // let radio = document.getElementsByClassName('answerRadio');
@@ -27,10 +25,10 @@ const Material = observer((props) => {
     store.loadMaterialContent(`/${materialId}`);
   }, []);
 
-  let currentMaterial = toJS(store.materials).filter((material) => {
+  let currentMaterial = store.materials.filter((material) => {
     return material._id === materialId;
   });
-  let currentSubject = toJS(store.subjects).filter((subject) => {
+  let currentSubject = store.subjects.filter((subject) => {
     return subject._id === subjectId;
   });
 
@@ -61,6 +59,6 @@ const Material = observer((props) => {
       }
     </div>
   );
-});
+};
 
 export default Material;

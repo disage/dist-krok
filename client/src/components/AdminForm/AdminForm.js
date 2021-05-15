@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CourseStore from '../../store/course';
+// import CourseStore from '../../store/course';
 import './AdminForm.scss';
 
 const store = new CourseStore();

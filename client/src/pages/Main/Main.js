@@ -1,7 +1,7 @@
 import React from 'react';
 import './Main.scss';
-import NewsItem from '../../сomponents/NewsItem/NewsItem';
-import LastMaterialItem from '../../сomponents/LastMaterialItem/LastMaterialItem';
+import NewsItem from '../../components/NewsItem/NewsItem';
+import LastMaterialItem from '../../components/LastMaterialItem/LastMaterialItem';
 
 const Main = () => {
   return (
