@@ -15,12 +15,12 @@ class AuthService {
             });
     }
 
-    logout() {
-        localStorage.removeItem("user");
+    async logout() {
+        await localStorage.removeItem("user");
     }
 
-    register(firstName, lastName, phone, email, password) {
-        return axios.post(API_URL + "signUp", {
+    async register(firstName, lastName, phone, email, password) {
+        return await axios.post(API_URL + "signUp", {
             firstName,
             lastName,
             phone,
