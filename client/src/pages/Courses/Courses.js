@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
-import CourseItem from '../../сomponents/CourseItem/CourseItem';
+import React, { useState, useEffect } from 'react';
+import CourseItem from '../../components/CourseItem/CourseItem';
+import AdminForm from '../../components/AdminForm/AdminForm';
 import './Courses.scss';
-import AdminForm from '../../сomponents/AdminForm/AdminForm';
-
-const store = '';
+import { getCourses, editCourse, createCourse, deleteCourse } from '../../store/actions/course';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Courses = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCourses());
+  }, []);
+  const store = useSelector((state) => state.course.courses);
+
   const [formStatus, setFormStatus] = useState(false);
   const [editStatus, setEditStatus] = useState(false);
-  const [formProps, setFormProps] = useState({ title: '', method: '', url: '', id: '' });
+  const [formProps, setFormProps] = useState({
+    title: '',
+    method: '',
+    url: '',
+    fields: {},
+    currentItem: {},
+  });
 
-  let formStatusHandler = (status, title, method, url, id) => {
-    setFormProps({ title, method, url, id });
+  let formStatusHandler = (status, title, method, url, fields, itemId) => {
+    // dispatch(getCourses());
+    dispatch(getCourses());
+    let currentItem = itemId ? store.find((course) => course._id === itemId) : {};
+    setFormProps({ title, method, url, fields, currentItem });
     setFormStatus(status);
   };
 
@@ -24,14 +39,14 @@ const Courses = (props) => {
   };
 
   return (
-    <>
+    <div className="courses">
       {formStatus ? (
         <AdminForm editFormStatus={() => formStatusHandler()} settings={formProps} />
       ) : (
-        <div className="courses">
+        <div className="coursesPage">
           <div className="coursesHeader">
             <h2>Ваши курсы:</h2>
-            <div className="btnWrapper">
+            <div className="adminBtnWrapper">
               <span className="addCourseBtn" onClick={editStatusHandler}>
                 Редактировать
               </span>
@@ -42,7 +57,15 @@ const Courses = (props) => {
                     true,
                     'Добавьте курс',
                     'POST',
-                    `http://localhost:5000/courses/`,
+                    `http://localhost:3000/api/courses/create`,
+                    {
+                      inputs: [
+                        { name: 'name', text: 'Название курса', type: 'text' },
+                        { name: 'teacherId', text: 'Id преподователя', type: 'text' },
+                        { name: 'groupsId', text: 'groupsId', type: 'text' },
+                      ],
+                      buttons: [{ value: 'Добавить курс', method: createCourse }],
+                    },
                   );
                 }}>
                 Добавить
@@ -50,16 +73,48 @@ const Courses = (props) => {
             </div>
           </div>
           <div className="coursesWrapper">
-            {store.courses.map((course) => (
+            {store?.map((course) => (
               <div key={course._id} className="courseItemWrapper">
                 {editStatus && (
                   <svg
                     onClick={() => {
                       formStatusHandler(
                         true,
-                        'Внесите изменения',
+                        'Внесите изменения:',
                         'PUT',
-                        `http://localhost:5000/courses/${course._id}`,
+                        `http://localhost:3000/api/courses/${course._id}`,
+                        {
+                          inputs: [
+                            {
+                              name: 'id',
+                              text: 'Id  курса',
+                              type: 'text',
+                              defaultValue: course._id,
+                            },
+                            {
+                              name: 'name',
+                              text: 'Название курса',
+                              type: 'text',
+                              defaultValue: course.name,
+                            },
+                            {
+                              name: 'teacherId',
+                              text: 'Id преподователя',
+                              type: 'text',
+                              defaultValue: course.teacherId,
+                            },
+                            {
+                              name: 'groupsId',
+                              text: 'groupsId',
+                              type: 'text',
+                              defaultValue: course.groupsId,
+                            },
+                          ],
+                          buttons: [
+                            { value: 'Редактировать курс', method: editCourse },
+                            { value: 'Удалить курс', method: deleteCourse },
+                          ],
+                        },
                         course._id,
                       );
                     }}
@@ -85,7 +140,8 @@ const Courses = (props) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
+
 export default Courses;

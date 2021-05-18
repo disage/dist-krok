@@ -1,72 +1,73 @@
 import {
-    CREATE_COURSE_FAIL,
-    CREATE_COURSE_SUCCESS,
-    DELETE_COURSE_FAIL,
-    DELETE_COURSE_SUCCESS,
-    EDIT_COURSE_FAIL,
-    GET_COURSE_SUCCESS,
-    EDIT_COURSE_SUCCESS,
-    GET_COURSE_FAIL,
-    GET_COURSES_FAIL,
-    GET_COURSES_SUCCESS,
-} from "../actions/types";
+  CREATE_COURSE_FAIL,
+  CREATE_COURSE_SUCCESS,
+  DELETE_COURSE_FAIL,
+  DELETE_COURSE_SUCCESS,
+  EDIT_COURSE_FAIL,
+  GET_COURSE_SUCCESS,
+  EDIT_COURSE_SUCCESS,
+  GET_COURSE_FAIL,
+  GET_COURSES_FAIL,
+  GET_COURSES_SUCCESS,
+} from '../actions/types';
 
-const initialState = {courses: [], course: {}}
+const initialState = { courses: [], course: {} };
 
-export default function (state = initialState, action) {
-    const { type, payload } = action;
+const courses = (state = initialState, action) => {
+  const { type, payload } = action;
 
-    switch (type) {
+  switch (type) {
     case CREATE_COURSE_SUCCESS:
-        return {
-            ...state,
-        };
+      return {
+        ...state,
+      };
     case CREATE_COURSE_FAIL:
-        return {
-            ...state,
-            course: null
-        };
+      return {
+        ...state,
+        course: null,
+      };
     case DELETE_COURSE_FAIL:
-        return {
-            ...state,
-            course: null
-        };
+      return {
+        ...state,
+        course: null,
+      };
     case DELETE_COURSE_SUCCESS:
-        return {
-            ...state,
-            course: null
-        };
+      return {
+        ...state,
+        course: null,
+      };
     case EDIT_COURSE_FAIL:
-        return {
-            ...state,
-            course: null
-        };
+      return {
+        ...state,
+        course: null,
+      };
     case GET_COURSE_SUCCESS:
-        return {
-            ...state,
-            course: payload.course
-        };
+      return {
+        ...state,
+        course: payload.course,
+      };
     case EDIT_COURSE_SUCCESS:
-        return {
-            ...state,
-            course: payload.course
-        };
+      return {
+        ...state,
+        course: payload,
+      };
     case GET_COURSE_FAIL:
-        return {
-            ...state,
-            course: null
-        };
+      return {
+        ...state,
+        course: null,
+      };
     case GET_COURSES_FAIL:
-        return {
-            ...state,
-            courses: null
-        };
+      return {
+        ...state,
+        courses: null,
+      };
     case GET_COURSES_SUCCESS:
-        return {
-            ...state,
-            courses: payload.courses
-        };
+      return {
+        ...state,
+        courses: payload,
+      };
     default:
-        return state;
-    }
-}
+      return state;
+  }
+};
+export default courses;

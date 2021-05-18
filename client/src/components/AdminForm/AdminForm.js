@@ -1,37 +1,50 @@
 import React, { useState, useEffect } from 'react';
-// import CourseStore from '../../store/course';
+import { useSelector, useDispatch } from 'react-redux';
+import { createCourse } from '../../store/actions/course';
+
 import './AdminForm.scss';
 
-const store = new CourseStore();
+// const store = new CourseStore();
 
 const AdminForm = ({ editFormStatus, settings }) => {
+  const [item, setItem] = useState({});
+
   useEffect(() => {
-    setCourse({ name: settings.name, teacher: settings.teacher });
+    settings.fields.inputs.map((item) => {
+      // item.defaultValue && setItem({ [item.name]: item.defaultValue });
+      item.defaultValue &&
+        setItem((prevState) => ({
+          ...prevState,
+          [item.name]: item.defaultValue,
+        }));
+      return 0;
+    });
   }, []);
-  let currentItem = store.courses.find((course) => course._id === settings.id);
+
+  const dispatch = useDispatch();
 
   const [error, setError] = useState('');
-  const [course, setCourse] = useState({ name: '', teacher: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCourse((prevState) => ({
+    setItem((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+
+  const handleSubmit = async (method) => {
     try {
       setError('');
-      await store.changeData(settings.url, course, settings.method);
+      dispatch(method(item));
+      editFormStatus(false);
     } catch {
-      setError('Failed to login');
+      setError('Failed to change data');
     }
   };
   return (
-    <div className="courses">
-      <div className="coursesHeader">
+    <>
+      <div className="formHeader">
         <h2>{settings.title}</h2>
         <span
           onClick={() => {
@@ -40,26 +53,33 @@ const AdminForm = ({ editFormStatus, settings }) => {
           Назад
         </span>
       </div>
-      <form className="addCourseForm" method="POST">
-        <label htmlFor="name">Имя курса</label>
-        <input
-          type="text"
-          name="name"
-          id="newCourseName"
-          onChange={handleChange}
-          defaultValue={currentItem && currentItem.name}
-        />
-        <label htmlFor="name">Имя преподователя</label>
-        <input
-          type="text"
-          name="teacher"
-          id="newTeacherName"
-          onChange={handleChange}
-          defaultValue={currentItem ? currentItem.teacher : ''}
-        />
-        <button onClick={handleSubmit}>Добавить курс</button>
+      <form className="adminForm" method="POST">
+        {settings?.fields?.inputs?.map((item) => (
+          <div className="inputWrapper" key={item.name}>
+            <label htmlFor={item.name}>{item.text}</label>
+            <input
+              type={item.type}
+              name={item.name}
+              onChange={handleChange}
+              defaultValue={item.defaultValue}
+            />
+          </div>
+        ))}
+        <div className="btnWrapper">
+          {settings?.fields?.buttons?.map((item) => (
+            <button
+              key={item.value}
+              className="adminFormBtn"
+              onClick={(event) => {
+                event.preventDefault();
+                handleSubmit(item.method);
+              }}>
+              {item.value}
+            </button>
+          ))}
+        </div>
       </form>
-    </div>
+    </>
   );
 };
 

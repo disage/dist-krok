@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import MaterialHeader from '../../сomponents/MaterialHeader/MaterialHeader';
+import MaterialHeader from '../../components/MaterialHeader/MaterialHeader';
 // import TestItem from '../../сomponents/TestItem/TestItem';
 // import CourseStore from '../../store/course';
 import './Material.scss';
 
-const store = new CourseStore();
+// const store = new CourseStore();
 
 const Material = (props) => {
   // let getAnswerData = (e) => {
@@ -21,23 +21,23 @@ const Material = (props) => {
   let materialId = window.location.pathname.split('/')[3];
 
   useEffect(() => {
-    store.loadMaterials(`/${subjectId}`);
-    store.loadMaterialContent(`/${materialId}`);
+    // store.loadMaterials(`/${subjectId}`);
+    // store.loadMaterialContent(`/${materialId}`);
   }, []);
 
-  let currentMaterial = store.materials.filter((material) => {
-    return material._id === materialId;
-  });
-  let currentSubject = store.subjects.filter((subject) => {
-    return subject._id === subjectId;
-  });
+  // let currentMaterial = store.materials.filter((material) => {
+  //   return material._id === materialId;
+  // });
+  // let currentSubject = store.subjects.filter((subject) => {
+  //   return subject._id === subjectId;
+  // });
 
   // console.log(toJS(store.materialContent));
   return (
     <div className="material">
       <MaterialHeader
-        materialData={currentMaterial[0] ? currentMaterial[0] : ''}
-        subjectName={currentSubject[0] ? currentSubject[0].subjectName : ''}
+      // materialData={currentMaterial[0] ? currentMaterial[0] : ''}
+      // subjectName={currentSubject[0] ? currentSubject[0].subjectName : ''}
       />
       {
         // <form className="materialContent">
@@ -52,9 +52,9 @@ const Material = (props) => {
         //   </button>
         // </form>
         <div className="materialContent">
-          {store.materialContent[0]
+          {/* {store.materialContent[0]
             ? store.materialContent[0].materialContent
-            : 'Контент отсутсвует'}
+            : 'Контент отсутсвует'} */}
         </div>
       }
     </div>
