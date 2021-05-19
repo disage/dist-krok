@@ -1,10 +1,8 @@
 import {Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from "@nestjs/common";
 import { SubjectService } from "./subject.service";
-import { CreateSubjectDto } from "./dto/create-subject.dto";
+import {CreateSubjectDto, EditSubjectDto} from "./dto/create-subject.dto";
 import {Roles} from "../decorators/roles.decorator";
 import {RolesGuard} from "../auth/Guards/roles.guard";
-import { SubjectService } from './subject.service';
-import { CreateSubjectDto, EditSubjectDto } from './dto/create-subject.dto';
 
 @Controller('/subject')
 export class SubjectController {
