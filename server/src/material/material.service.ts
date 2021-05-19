@@ -9,7 +9,7 @@ export class MaterialService {
 
     constructor(@InjectModel(MaterialModel) private materialModel: ModelType<MaterialModel>) {}
 
-    async getMaterials(id: string): Promise<DocumentType<MaterialModel>[]>{
+    async getMaterial(id: string): Promise<DocumentType<MaterialModel>[]>{
         return this.materialModel.find({'subjectId': id}, {materialContent: 0});
     }
 
