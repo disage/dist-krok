@@ -1,9 +1,13 @@
-import {BadRequestException, Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
+import {BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from '@nestjs/common';
 import {UserService} from "./user.service";
 import {CreateUserDto} from "./dto/create-user.dto";
 import {roleEnum} from "./enums/role.enum";
+import {Roles} from "../decorators/roles.decorator";
+import {RolesGuard} from "../auth/Guards/roles.guard";
 
 @Controller('user')
+@Roles('admin')
+@UseGuards(RolesGuard)
 export class UserController {
 
   constructor(private readonly userService: UserService) {
