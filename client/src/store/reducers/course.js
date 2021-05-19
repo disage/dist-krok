@@ -44,7 +44,7 @@ const courses = (state = initialState, action) => {
     case GET_COURSE_SUCCESS:
       return {
         ...state,
-        course: payload.course,
+        course: payload,
       };
     case EDIT_COURSE_SUCCESS:
       return {

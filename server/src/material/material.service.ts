@@ -10,8 +10,10 @@ export class MaterialService {
     @InjectModel(MaterialModel) private materialModel: ModelType<MaterialModel>,
   ) {}
 
-  async getMaterials(id: string): Promise<DocumentType<MaterialModel>[]> {
-    return this.materialModel.find({ subjectId: id }, { materialContent: 0 });
+  async getMaterials(id: string): Promise<DocumentType<MaterialModel>> {
+    // return this.materialModel.find({ subjectId: id }, { materialContent: 0 });
+    return this.materialModel.findById(id).exec();
+    // return this.materialModel.findById({ id }, { materialContent: 0 }).exec();
   }
 
   async createMaterial(
@@ -23,7 +25,9 @@ export class MaterialService {
   async getAllMaterials(): Promise<DocumentType<MaterialModel>[]> {
     return this.materialModel.find({}, { materialContent: 0 });
   }
-
+  async deleteMaterial(id: string): Promise<DocumentType<MaterialModel>> {
+    return this.materialModel.findByIdAndDelete(id).exec();
+  }
   async editMaterial(
     dto: EditMaterialsDto,
     id: string,

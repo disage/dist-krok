@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { createCourse } from '../../store/actions/course';
+import { useDispatch } from 'react-redux';
 
 import './AdminForm.scss';
 

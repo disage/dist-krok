@@ -23,8 +23,8 @@ const Courses = (props) => {
   });
 
   let formStatusHandler = (status, title, method, url, fields, itemId) => {
-    // dispatch(getCourses());
     dispatch(getCourses());
+
     let currentItem = itemId ? store.find((course) => course._id === itemId) : {};
     setFormProps({ title, method, url, fields, currentItem });
     setFormStatus(status);

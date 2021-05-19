@@ -1,17 +1,16 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:3000/api/material/';
+const API_URL = 'http://localhost:3000/api/subject/';
 
-class MaterialService {
-  async createMaterial({ subjectId, materialName, materialContent }) {
+class SubjectService {
+  async createSubject({ courseId, subjectName }) {
     return await axios
       .post(
         API_URL,
         {
-          subjectId,
-          materialName,
-          materialContent,
+          courseId,
+          subjectName,
         },
         {
           headers: authHeader(),
@@ -22,11 +21,11 @@ class MaterialService {
       });
   }
 
-  async editMaterial({ id, materialName, materialContent }) {
+  async editSubject({ id, courseId, subjectName }) {
     return await axios
       .put(
         API_URL + id,
-        { materialName, materialContent },
+        { id, courseId, subjectName },
         {
           headers: authHeader(),
         },
@@ -36,8 +35,7 @@ class MaterialService {
       });
   }
 
-  async deleteMaterial({ id }) {
-    console.log(id);
+  async deleteSubject({ id }) {
     return await axios
       .delete(API_URL + id, {
         headers: authHeader(),
@@ -47,7 +45,7 @@ class MaterialService {
       });
   }
 
-  async getMaterials() {
+  async getSubjects() {
     return await axios
       .get(API_URL, {
         headers: authHeader(),
@@ -57,7 +55,7 @@ class MaterialService {
       });
   }
 
-  async getMaterial(id) {
+  async getSubject(id) {
     return await axios
       .get(API_URL + id, {
         headers: authHeader(),
@@ -68,4 +66,4 @@ class MaterialService {
   }
 }
 
-export default new MaterialService();
+export default new SubjectService();
