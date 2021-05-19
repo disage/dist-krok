@@ -1,17 +1,16 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:3000/api/courses/';
+const API_URL = 'http://localhost:3000/api/subject/';
 
-class CourseService {
-  async createCourse({ name, teacherId, groupsId }) {
+class SubjectService {
+  async createSubject({ courseId, subjectName }) {
     return await axios
       .post(
-        API_URL + 'create',
+        API_URL,
         {
-          name,
-          teacherId,
-          groupsId,
+          courseId,
+          subjectName,
         },
         {
           headers: authHeader(),
@@ -22,11 +21,11 @@ class CourseService {
       });
   }
 
-  async editCourse({ id, name, teacherId, groupsId }) {
+  async editSubject({ id, courseId, subjectName }) {
     return await axios
       .put(
         API_URL + id,
-        { name, teacherId, groupsId },
+        { id, courseId, subjectName },
         {
           headers: authHeader(),
         },
@@ -36,7 +35,7 @@ class CourseService {
       });
   }
 
-  async deleteCourse({ id }) {
+  async deleteSubject({ id }) {
     return await axios
       .delete(API_URL + id, {
         headers: authHeader(),
@@ -46,7 +45,7 @@ class CourseService {
       });
   }
 
-  async getCourses() {
+  async getSubjects() {
     return await axios
       .get(API_URL, {
         headers: authHeader(),
@@ -56,7 +55,7 @@ class CourseService {
       });
   }
 
-  async getCourse(id) {
+  async getSubject(id) {
     return await axios
       .get(API_URL + id, {
         headers: authHeader(),
@@ -67,4 +66,4 @@ class CourseService {
   }
 }
 
-export default new CourseService();
+export default new SubjectService();
