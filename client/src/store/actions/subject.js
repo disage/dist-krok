@@ -1,30 +1,30 @@
 import {
   SET_MESSAGE,
-  CREATE_COURSE_SUCCESS,
-  CREATE_COURSE_FAIL,
-  EDIT_COURSE_SUCCESS,
-  EDIT_COURSE_FAIL,
-  DELETE_COURSE_SUCCESS,
-  DELETE_COURSE_FAIL,
-  GET_COURSE_SUCCESS,
-  GET_COURSE_FAIL,
-  GET_COURSES_SUCCESS,
-  GET_COURSES_FAIL,
+  CREATE_SUBJECT_SUCCESS,
+  CREATE_SUBJECT_FAIL,
+  EDIT_SUBJECT_SUCCESS,
+  EDIT_SUBJECT_FAIL,
+  DELETE_SUBJECT_SUCCESS,
+  DELETE_SUBJECT_FAIL,
+  GET_SUBJECT_SUCCESS,
+  GET_SUBJECT_FAIL,
+  GET_SUBJECTS_SUCCESS,
+  GET_SUBJECTS_FAIL,
 } from './types';
 
-import CourseService from '../../services/course.service';
+import SubjectService from '../../services/subject.service';
 
-export const createCourse = (item) => (dispatch) => {
-  return CourseService.createCourse(item).then(
+export const createSubject = (item) => (dispatch) => {
+  return SubjectService.createSubject(item).then(
     (response) => {
       dispatch({
-        type: CREATE_COURSE_SUCCESS,
+        type: CREATE_SUBJECT_SUCCESS,
         payload: response,
       });
 
       dispatch({
         type: SET_MESSAGE,
-        payload: 'Курс удачно создался',
+        payload: 'Тема удачно создалась',
       });
 
       return Promise.resolve();
@@ -36,7 +36,7 @@ export const createCourse = (item) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: CREATE_COURSE_FAIL,
+        type: CREATE_SUBJECT_FAIL,
       });
 
       dispatch({
@@ -49,16 +49,16 @@ export const createCourse = (item) => (dispatch) => {
   );
 };
 
-export const editCourse = (item) => (dispatch) => {
-  return CourseService.editCourse(item).then(
+export const editSubject = (item) => (dispatch) => {
+  return SubjectService.editSubject(item).then(
     (response) => {
       dispatch({
-        type: EDIT_COURSE_SUCCESS,
+        type: EDIT_SUBJECT_SUCCESS,
       });
 
       dispatch({
         type: SET_MESSAGE,
-        payload: 'Изменения курса удачно сохранились',
+        payload: 'Изменения темы удачно сохранились',
       });
 
       return Promise.resolve();
@@ -70,7 +70,7 @@ export const editCourse = (item) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: EDIT_COURSE_FAIL,
+        type: EDIT_SUBJECT_FAIL,
       });
 
       dispatch({
@@ -83,16 +83,16 @@ export const editCourse = (item) => (dispatch) => {
   );
 };
 
-export const deleteCourse = (item) => (dispatch) => {
-  return CourseService.deleteCourse(item).then(
+export const deleteSubject = (item) => (dispatch) => {
+  return SubjectService.deleteSubject(item).then(
     (data) => {
       dispatch({
-        type: DELETE_COURSE_SUCCESS,
+        type: DELETE_SUBJECT_SUCCESS,
       });
 
       dispatch({
         type: SET_MESSAGE,
-        payload: 'Курс был успешно удален',
+        payload: 'Тема была успешно удалена',
       });
 
       return Promise.resolve();
@@ -104,37 +104,7 @@ export const deleteCourse = (item) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: DELETE_COURSE_FAIL,
-      });
-
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
-
-      return Promise.reject();
-    },
-  );
-};
-
-export const getCourse = (id) => (dispatch) => {
-  return CourseService.getCourse(id).then(
-    (response) => {
-      dispatch({
-        type: GET_COURSE_SUCCESS,
-        payload: response,
-      });
-
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      dispatch({
-        type: GET_COURSE_FAIL,
+        type: DELETE_SUBJECT_FAIL,
       });
 
       dispatch({
@@ -147,11 +117,11 @@ export const getCourse = (id) => (dispatch) => {
   );
 };
 
-export const getCourses = () => (dispatch) => {
-  return CourseService.getCourses().then(
+export const getSubject = (id) => (dispatch) => {
+  return SubjectService.getSubject(id).then(
     (response) => {
       dispatch({
-        type: GET_COURSES_SUCCESS,
+        type: GET_SUBJECT_SUCCESS,
         payload: response,
       });
 
@@ -164,7 +134,37 @@ export const getCourses = () => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: GET_COURSES_FAIL,
+        type: GET_SUBJECT_FAIL,
+      });
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+
+      return Promise.reject();
+    },
+  );
+};
+
+export const getSubjects = () => (dispatch) => {
+  return SubjectService.getSubjects().then(
+    (response) => {
+      dispatch({
+        type: GET_SUBJECTS_SUCCESS,
+        payload: response,
+      });
+
+      return Promise.resolve();
+    },
+    (error) => {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      dispatch({
+        type: GET_SUBJECTS_FAIL,
       });
 
       dispatch({

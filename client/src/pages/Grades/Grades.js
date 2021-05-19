@@ -1,5 +1,5 @@
 import React from 'react';
-import MaterialHeader from '../../сomponents/MaterialHeader/MaterialHeader';
+import MaterialHeader from '../../components/MaterialHeader/MaterialHeader';
 import './Grades.scss';
 
 const Grades = (props) => {

@@ -1,30 +1,30 @@
 import {
   SET_MESSAGE,
-  CREATE_COURSE_SUCCESS,
-  CREATE_COURSE_FAIL,
-  EDIT_COURSE_SUCCESS,
-  EDIT_COURSE_FAIL,
-  DELETE_COURSE_SUCCESS,
-  DELETE_COURSE_FAIL,
-  GET_COURSE_SUCCESS,
-  GET_COURSE_FAIL,
-  GET_COURSES_SUCCESS,
-  GET_COURSES_FAIL,
+  CREATE_MATERIAL_SUCCESS,
+  CREATE_MATERIAL_FAIL,
+  EDIT_MATERIAL_SUCCESS,
+  EDIT_MATERIAL_FAIL,
+  DELETE_MATERIAL_SUCCESS,
+  DELETE_MATERIAL_FAIL,
+  GET_MATERIAL_SUCCESS,
+  GET_MATERIAL_FAIL,
+  GET_MATERIALS_SUCCESS,
+  GET_MATERIALS_FAIL,
 } from './types';
 
-import CourseService from '../../services/course.service';
+import MaterialService from '../../services/material.service';
 
-export const createCourse = (item) => (dispatch) => {
-  return CourseService.createCourse(item).then(
+export const createMaterial = (item) => (dispatch) => {
+  return MaterialService.createMaterial(item).then(
     (response) => {
       dispatch({
-        type: CREATE_COURSE_SUCCESS,
+        type: CREATE_MATERIAL_SUCCESS,
         payload: response,
       });
 
       dispatch({
         type: SET_MESSAGE,
-        payload: 'Курс удачно создался',
+        payload: 'Материал удачно создался',
       });
 
       return Promise.resolve();
@@ -36,7 +36,7 @@ export const createCourse = (item) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: CREATE_COURSE_FAIL,
+        type: CREATE_MATERIAL_FAIL,
       });
 
       dispatch({
@@ -49,16 +49,16 @@ export const createCourse = (item) => (dispatch) => {
   );
 };
 
-export const editCourse = (item) => (dispatch) => {
-  return CourseService.editCourse(item).then(
+export const editMaterial = (item) => (dispatch) => {
+  return MaterialService.editMaterial(item).then(
     (response) => {
       dispatch({
-        type: EDIT_COURSE_SUCCESS,
+        type: EDIT_MATERIAL_SUCCESS,
       });
 
       dispatch({
         type: SET_MESSAGE,
-        payload: 'Изменения курса удачно сохранились',
+        payload: 'Изменения матереала удачно сохранились',
       });
 
       return Promise.resolve();
@@ -70,7 +70,7 @@ export const editCourse = (item) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: EDIT_COURSE_FAIL,
+        type: EDIT_MATERIAL_FAIL,
       });
 
       dispatch({
@@ -83,16 +83,16 @@ export const editCourse = (item) => (dispatch) => {
   );
 };
 
-export const deleteCourse = (item) => (dispatch) => {
-  return CourseService.deleteCourse(item).then(
+export const deleteMaterial = (item) => (dispatch) => {
+  return MaterialService.deleteMaterial(item).then(
     (data) => {
       dispatch({
-        type: DELETE_COURSE_SUCCESS,
+        type: DELETE_MATERIAL_SUCCESS,
       });
 
       dispatch({
         type: SET_MESSAGE,
-        payload: 'Курс был успешно удален',
+        payload: 'Материал был успешно удален',
       });
 
       return Promise.resolve();
@@ -104,37 +104,7 @@ export const deleteCourse = (item) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: DELETE_COURSE_FAIL,
-      });
-
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
-
-      return Promise.reject();
-    },
-  );
-};
-
-export const getCourse = (id) => (dispatch) => {
-  return CourseService.getCourse(id).then(
-    (response) => {
-      dispatch({
-        type: GET_COURSE_SUCCESS,
-        payload: response,
-      });
-
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      dispatch({
-        type: GET_COURSE_FAIL,
+        type: DELETE_MATERIAL_FAIL,
       });
 
       dispatch({
@@ -147,11 +117,11 @@ export const getCourse = (id) => (dispatch) => {
   );
 };
 
-export const getCourses = () => (dispatch) => {
-  return CourseService.getCourses().then(
+export const getMaterial = (id) => (dispatch) => {
+  return MaterialService.getMaterial(id).then(
     (response) => {
       dispatch({
-        type: GET_COURSES_SUCCESS,
+        type: GET_MATERIAL_SUCCESS,
         payload: response,
       });
 
@@ -164,7 +134,37 @@ export const getCourses = () => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: GET_COURSES_FAIL,
+        type: GET_MATERIAL_FAIL,
+      });
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+
+      return Promise.reject();
+    },
+  );
+};
+
+export const getMaterials = () => (dispatch) => {
+  return MaterialService.getMaterials().then(
+    (response) => {
+      dispatch({
+        type: GET_MATERIALS_SUCCESS,
+        payload: response,
+      });
+
+      return Promise.resolve();
+    },
+    (error) => {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      dispatch({
+        type: GET_MATERIALS_FAIL,
       });
 
       dispatch({
