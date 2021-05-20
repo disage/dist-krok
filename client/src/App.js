@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Switch, Route, Link, Redirect, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Main from './pages/Main/Main';
@@ -10,8 +10,6 @@ import AllGrades from './pages/AllGrades/AllGrades';
 import Grades from './pages/Grades/Grades';
 import Login from './pages/Login/Login';
 import Sidebar from './components/Sidebar/Sidebar';
-import { clearMessage } from './store/actions/message';
-import { history } from './helpers/history';
 
 import './App.scss';
 
@@ -24,10 +22,6 @@ class App extends Component {
       showAdminBoard: false,
       currentUser: undefined,
     };
-
-    history.listen((location) => {
-      props.dispatch(clearMessage()); // clear message when changing location
-    });
   }
 
   componentDidMount() {
@@ -49,15 +43,9 @@ class App extends Component {
     }
     return (
       <div className="app">
-        <Router history={history}>
+        <BrowserRouter>
           <Sidebar />
           <Switch>
-            {/* <Route exact path="/dashboard">
-              <Main />
-            </Route> */}
-            {/* <StudentRoute path="/dashboard">
-              <Main />
-            </StudentRoute> */}
             <Route path="/" exact component={Main} />
             <Route path="/courses" exact component={Courses} />
             <Route path="/courses/:number" component={Course} />
@@ -65,7 +53,7 @@ class App extends Component {
             <Route path="/grades" exact component={AllGrades} />
             <Route path="/grades/:number" component={Grades} />
           </Switch>
-        </Router>
+        </BrowserRouter>
       </div>
     );
   }
