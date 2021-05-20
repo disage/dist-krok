@@ -10,30 +10,28 @@ export class MaterialService {
     @InjectModel(MaterialModel) private materialModel: ModelType<MaterialModel>,
   ) {}
 
-    async getMaterials(id: string): Promise<DocumentType<MaterialModel>> {
-      // return this.materialModel.find({ subjectId: id }, { materialContent: 0 });
-      return this.materialModel.findById(id).exec();
-      // return this.materialModel.findById({ id }, { materialContent: 0 }).exec();
-    }
+  async getMaterial(id: string): Promise<DocumentType<MaterialModel>> {
+    return this.materialModel.findById(id).exec();
+  }
 
+  async createMaterial(
+    dto: CreateMaterialDto,
+  ): Promise<DocumentType<MaterialModel>> {
+    return this.materialModel.create({ ...dto });
+  }
 
-    async getMaterial(id: string): Promise<DocumentType<MaterialModel>[]>{
-        return this.materialModel.find({'subjectId': id}, {materialContent: 0});
-    }
+  async getAllMaterials(): Promise<DocumentType<MaterialModel>[]> {
+    return this.materialModel.find({}, { materialContent: 0 });
+  }
 
-    async createMaterial(dto: CreateMaterialDto): Promise<DocumentType<MaterialModel>>{
-        return this.materialModel.create({...dto});
-    }
+  async editMaterial(
+    dto: EditMaterialsDto,
+    id: string,
+  ): Promise<DocumentType<MaterialModel>> {
+    return this.materialModel.findByIdAndUpdate(id, dto, { new: true });
+  }
 
-    async getAllMaterials(): Promise<DocumentType<MaterialModel>[]>{
-        return this.materialModel.find({}, {materialContent: 0});
-    }
-
-    async editMaterial(dto: EditMaterialsDto, id: string): Promise<DocumentType<MaterialModel>>{
-        return this.materialModel.findByIdAndUpdate(id, dto,  { new: true });
-    }
-
-    async deleteMaterial(id: string): Promise<DocumentType<MaterialModel>> {
-      return this.materialModel.findByIdAndDelete(id).exec();
-    }
+  async deleteMaterial(id: string): Promise<DocumentType<MaterialModel>> {
+    return this.materialModel.findByIdAndDelete(id).exec();
+  }
 }

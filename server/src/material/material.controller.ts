@@ -1,15 +1,25 @@
-import {Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from "@nestjs/common";
-import {MaterialService} from "./material.service";
-import {CreateMaterialDto, EditMaterialsDto} from "./dto/create-material.dto";
-import {Roles} from "../decorators/roles.decorator";
-import {RolesGuard} from "../auth/Guards/roles.guard";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
+import { MaterialService } from './material.service';
+import { CreateMaterialDto, EditMaterialsDto } from './dto/create-material.dto';
+import { Roles } from '../decorators/roles.decorator';
+import { RolesGuard } from '../auth/Guards/roles.guard';
 
 @Controller('/material')
 export class MaterialController {
-  constructor(private materialService: MaterialService) {
-  }
+  constructor(private materialService: MaterialService) {}
 
   @Get(':id')
+  @Roles('admin', 'teacher')
+  @UseGuards(RolesGuard)
   getMaterials(@Param('id') id: string) {
     return this.materialService.getMaterial(id);
   }
