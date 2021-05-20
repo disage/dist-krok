@@ -77,8 +77,9 @@ const AdminForm = ({editFormStatus, settings}) => {
                     initialValue="<p>This is the initial content of the editor.</p>"
                     apiKey="2gu4ndvf4r33jvmnz0rkrvy7lrt26od89emjyo68oaqx3k9s"
                     init={{
+                        width: "100%",
                         height: 500,
-                        menubar: false,
+                        menubar: true,
                         plugins: [
                             'advlist autolink lists link image charmap print anchor',
                             'searchreplace visualblocks code fullscreen',
@@ -91,7 +92,6 @@ const AdminForm = ({editFormStatus, settings}) => {
                         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                     }}
                 />
-                <button onClick={log}>Log editor content</button>
                 <div className="btnWrapper">
                     {settings?.fields?.buttons?.map((item) => (
                         <button
