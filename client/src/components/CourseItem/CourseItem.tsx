@@ -22,13 +22,11 @@ const CourseItem: React.FC<CourseItemProps> = ({courseData,secondaryTitle, path}
         pathname: path,
 
       }}>
-      {/*<p className="courseMain" >{currentCourse.name ? currentCourse.name : courseData ? courseData.name : 'Название курса'}</p>*/}
       <p className="courseMain" >{courseData?.name || 'Название курса'}</p>
       <div className="courseSecondary">
         <div className="courseSecondaryWrapper">
           <b>{secondaryTitle}</b>
-          {/*<span>{currentCourse.teacher ? currentCourse.teacher : courseData ? courseData.teacher : 'Имя преподователя' }</span>*/}
-          <span>{courseData?.teacherId || 'Имя преподователя' }</span>
+          <span>{courseData?.teacherId || '' }</span>
         </div>
       </div>
     </Link>

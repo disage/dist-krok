@@ -1,33 +1,17 @@
 import React from 'react';
-import MaterialHeader from '../../components/MaterialHeader/MaterialHeader';
+import MaterialGradeItem from '../../components/MaterialGradeItem/MaterialGradeItem';
 import './Grades.scss';
 
 const Grades = (props) => {
   return (
     <div className="grades">
       <div className="gradesHeader">
-        <h2>{props.location.courseParams.courseData.courseName}</h2>
-        <span className="courseGrade">{props.location.courseParams.secondaryTitle}</span>
+        <h2>Алгебра</h2>
+        <span className="courseGrade">40</span>
       </div>
       <div className="defaultDivider"></div>
-      <MaterialHeader
-        isGrade={true}
-        subjName="Тема 1"
-        materialGrade="5"
-        materialData={{
-          materialId: 1,
-          materialName: 'Лекция 1',
-        }}
-      />
-      <MaterialHeader
-        isGrade={true}
-        subjName="Тема 1"
-        materialGrade="3"
-        materialData={{
-          materialId: 2,
-          materialName: 'Практика 1',
-        }}
-      />
+      <MaterialGradeItem _id="60a518e92267885120adfada" materialName="Алгебра" materialGrade="5" />
+      <MaterialGradeItem _id="60a518e92267885120adfada" materialName="ООП" materialGrade="3" />
     </div>
   );
 };
