@@ -41,7 +41,7 @@ const Courses = (props) => {
   return (
     <div className="courses">
       {formStatus ? (
-        <AdminForm editFormStatus={() => formStatusHandler()} settings={formProps} />
+        <AdminForm type='course' editFormStatus={() => formStatusHandler()} settings={formProps} />
       ) : (
         <div className="coursesPage">
           <div className="coursesHeader">
