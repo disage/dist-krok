@@ -6,7 +6,7 @@ import {Editor} from '@tinymce/tinymce-react';
 
 // const store = new CourseStore();
 
-const AdminForm = ({editFormStatus, settings}) => {
+const AdminForm = ({type, editFormStatus, settings}) => {
     const [item, setItem] = useState({});
 
     useEffect(() => {
@@ -72,26 +72,28 @@ const AdminForm = ({editFormStatus, settings}) => {
                         />
                     </div>
                 ))}
-                <Editor
-                    onInit={(evt, editor) => editorRef.current = editor}
-                    initialValue="<p>This is the initial content of the editor.</p>"
-                    apiKey="2gu4ndvf4r33jvmnz0rkrvy7lrt26od89emjyo68oaqx3k9s"
-                    init={{
-                        width: "100%",
-                        height: 500,
-                        menubar: true,
-                        plugins: [
-                            'advlist autolink lists link image charmap print anchor',
-                            'searchreplace visualblocks code fullscreen',
-                            'insertdatetime media table paste code help wordcount',
-                        ],
-                        toolbar: 'undo redo | formatselect | ' +
-                            'bold italic backcolor | alignleft aligncenter ' +
-                            'alignright alignjustify | bullist numlist outdent indent | ' +
-                            'removeformat | help',
-                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-                    }}
-                />
+                {type === "material" &&
+                    <Editor
+                        onInit={(evt, editor) => editorRef.current = editor}
+                        initialValue="<p>This is the initial content of the editor.</p>"
+                        apiKey="2gu4ndvf4r33jvmnz0rkrvy7lrt26od89emjyo68oaqx3k9s"
+                        init={{
+                            width: "100%",
+                            height: 500,
+                            menubar: true,
+                            plugins: [
+                                'advlist autolink lists link image charmap print anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount',
+                            ],
+                            toolbar: 'undo redo | formatselect | ' +
+                                'bold italic backcolor | alignleft aligncenter ' +
+                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                'removeformat | help',
+                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                        }}
+                    />
+                }
                 <div className="btnWrapper">
                     {settings?.fields?.buttons?.map((item) => (
                         <button

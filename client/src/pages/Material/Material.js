@@ -48,7 +48,7 @@ const Material = (props) => {
   return (
     <div className="material">
       {formStatus ? (
-        <AdminForm editFormStatus={() => formStatusHandler()} settings={formProps} />
+        <AdminForm type='material' editFormStatus={() => formStatusHandler()} settings={formProps} />
       ) : (
         <>
           <div className="adminBtnWrapper">
