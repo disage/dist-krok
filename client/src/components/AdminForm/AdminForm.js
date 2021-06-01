@@ -3,14 +3,11 @@ import { useDispatch } from 'react-redux';
 
 import './AdminForm.scss';
 
-// const store = new CourseStore();
-
 const AdminForm = ({ editFormStatus, settings }) => {
   const [item, setItem] = useState({});
 
   useEffect(() => {
-    settings.fields.inputs.map((item) => {
-      // item.defaultValue && setItem({ [item.name]: item.defaultValue });
+    settings?.fields?.inputs?.map((item) => {
       item.defaultValue &&
         setItem((prevState) => ({
           ...prevState,
