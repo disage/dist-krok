@@ -13,11 +13,24 @@ export class GradeService {
   }
 
   async updateById(dto: CreateGradeDto, id: string): Promise<DocumentType<GradeModel>>{
-    return this.gradeModel.findByIdAndUpdate(id, dto, {new: true})
+    return this.gradeModel.findByIdAndUpdate(id, dto, {new: true}).exec();
   }
 
-  async create(dto: CreateGradeDto): Promise<DocumentType<GradeModel>>{
+  async createGrade(dto: CreateGradeDto){
     return this.gradeModel.create(dto)
+  }
+
+  async deleteGrade(id){
+    return this.gradeModel.remove(id).exec();
+  }
+
+  async getByMaterialId(id){
+    return this.gradeModel.find({materialId: id}, {}).exec();
+  }
+
+  async getMyGrades({user}){
+    const id = user._id;
+    return this.gradeModel.find({userId: id}, {}).exec();
   }
 
 }
