@@ -12,6 +12,7 @@ import Login from './pages/Login/Login';
 import Sidebar from './components/Sidebar/Sidebar';
 
 import './App.scss';
+import Users from './pages/Users/Users';
 
 class App extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class App extends Component {
             <Route path="/material/:number" component={Material} />
             <Route path="/grades" exact component={AllGrades} />
             <Route path="/grades/:number" component={Grades} />
+            <Route path="/users" component={Users} />
           </Switch>
         </BrowserRouter>
       </div>

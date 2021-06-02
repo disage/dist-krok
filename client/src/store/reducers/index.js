@@ -4,6 +4,7 @@ import message from './message';
 import course from './course';
 import subject from './subject';
 import material from './material';
+import user from './user';
 
 export default combineReducers({
   auth,
@@ -11,4 +12,5 @@ export default combineReducers({
   subject,
   material,
   message,
+  user,
 });

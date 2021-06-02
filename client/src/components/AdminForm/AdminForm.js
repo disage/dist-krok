@@ -4,29 +4,20 @@ import {useDispatch} from 'react-redux';
 import './AdminForm.scss';
 import {Editor} from '@tinymce/tinymce-react';
 
-// const store = new CourseStore();
 
-const AdminForm = ({type, editFormStatus, settings}) => {
-    const [item, setItem] = useState({});
+const AdminForm = ({ editFormStatus, settings }) => {
+  const [item, setItem] = useState({});
 
-    useEffect(() => {
-        settings.fields.inputs.map((item) => {
-            // item.defaultValue && setItem({ [item.name]: item.defaultValue });
-            item.defaultValue &&
-            setItem((prevState) => ({
-                ...prevState,
-                [item.name]: item.defaultValue,
-            }));
-            return 0;
-        });
-    }, []);
-
-    const editorRef = useRef(null);
-    const log = () => {
-        if (editorRef.current) {
-            console.log(editorRef.current.getContent());
-        }
-    };
+  useEffect(() => {
+    settings?.fields?.inputs?.map((item) => {
+      item.defaultValue &&
+        setItem((prevState) => ({
+          ...prevState,
+          [item.name]: item.defaultValue,
+        }));
+      return 0;
+    });
+  }, []);
 
     const dispatch = useDispatch();
 
