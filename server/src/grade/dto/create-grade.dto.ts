@@ -1,9 +1,16 @@
-import {IsString} from "class-validator";
+import {IsNumber, IsString} from "class-validator";
+import {Types} from "mongoose";
 
 export class CreateGradeDto{
   @IsString()
-  userId: string
+  userId: Types.ObjectId;
 
   @IsString()
-  materialId: string;
+  materialId: Types.ObjectId;
+
+  @IsString()
+  teacherId: Types.ObjectId;
+
+  @IsNumber()
+  value: number;
 }
