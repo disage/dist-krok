@@ -1,13 +1,18 @@
 import {Base, TimeStamps} from "@typegoose/typegoose/lib/defaultClasses";
-import {prop, Ref} from "@typegoose/typegoose";
-import {MaterialModel} from "../material/material.model";
-import {UserModel} from "../user/user.model";
+import {prop} from "@typegoose/typegoose";
+import {Types} from "mongoose";
 
 export interface GradeModel extends Base{}
 export class GradeModel extends TimeStamps{
-  @prop({ref: () => UserModel, type: String})
-  userId: Ref<UserModel, string>
+  @prop()
+  userId: Types.ObjectId;
 
-  @prop({ref: () => MaterialModel, type: String})
-  materialId: Ref<MaterialModel, string>
+  @prop()
+  materialId: Types.ObjectId;
+
+  @prop()
+  teacherId: Types.ObjectId;
+
+  @prop()
+  value: number;
 }
