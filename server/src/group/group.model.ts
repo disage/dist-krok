@@ -10,5 +10,5 @@ export class GroupModel extends TimeStamps{
   groupTeacher: Types.ObjectId;
 
   @prop({ type: () => [String]})
-  groupStudents: string[];
+  groupStudents: Types.ObjectId[];
 }

@@ -1,4 +1,4 @@
-import {BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from '@nestjs/common';
+import {BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, UseGuards, Request} from '@nestjs/common';
 import {UserService} from "./user.service";
 import {CreateUserDto} from "./dto/create-user.dto";
 import {roleEnum} from "./enums/role.enum";
@@ -46,6 +46,11 @@ export class UserController {
   @Post('/findByEmail')
   async findByEmail(@Body('email') email: string) {
     return await this.userService.findByEmail(email);
+  }
+
+  @Get('get/myprofile')
+  async getMyProfile(@Request() req){
+    return await this.userService.getMyProfile(req);
   }
 
 }
