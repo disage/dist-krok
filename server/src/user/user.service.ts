@@ -6,6 +6,8 @@ import {ModelType, DocumentType} from "@typegoose/typegoose/lib/types";
 import {UserModel} from "./user.model";
 import {InjectModel} from "nestjs-typegoose";
 import {roleEnum} from "./enums/role.enum";
+import { GroupModel } from '../group/group.model';
+import { Types } from 'mongoose';
 
 @Injectable()
 export class UserService {
@@ -51,11 +53,50 @@ export class UserService {
     }
 
     async findByEmail(email: string): Promise<DocumentType<UserModel>> {
-        console.log(email)
         return await this.userModel.findOne({ email }).exec();
     }
 
     async update(id: string, payload: Partial<DocumentType<UserModel>>) {
         return this.userModel.updateOne({_id: id}, payload).exec();
+    }
+
+    async getMyProfile({user}){
+        const id = user._id;
+        return this.userModel.aggregate([
+            {
+                $match: {
+                    _id: Types.ObjectId(id)
+                }
+            },
+            { $unset: "password" },
+            {
+                $lookup: {
+                    from: 'Group',
+                    localField: '_id',
+                    foreignField: 'groupStudents',
+                    as: 'groups',
+                }
+            },
+            { $unwind: "$groups" },
+            {
+                $lookup: {
+                    from: 'Course',
+                    localField: 'groups._id',
+                    foreignField: 'groupsId',
+                    as: 'course',
+                }
+            },
+            {
+                $project:{
+                    _id : 1,
+                    email : 1,
+                    firstName : 1,
+                    lastName : 1,
+                    phone : 1,
+                    userGroup : "$groups.groupName",
+                    userCourses : "$course",
+                }
+            }
+        ]).exec() as (UserModel & {group: GroupModel})[];
     }
 }

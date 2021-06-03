@@ -10,5 +10,5 @@ export class CreateGroupDto{
 
   @IsArray()
   @IsString({each: true})
-  groupStudents: string[];
+  groupStudents: Types.ObjectId[];
 }
