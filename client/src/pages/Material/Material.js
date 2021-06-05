@@ -102,9 +102,10 @@ const Material = (props) => {
             subjectName={currentSubject[0]?.subjectName || 'undefind'}
           />
 
-          <div className="materialContent">
-            {materialStore?.material?.materialContent || 'Контент отсутсвует'}
-          </div>
+          <div
+            className="materialContent"
+            dangerouslySetInnerHTML={{ __html: materialStore?.material?.materialContent || 'Контент отсутсвует' }}
+          />
         </>
       )}
     </div>

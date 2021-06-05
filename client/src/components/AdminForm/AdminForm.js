@@ -6,9 +6,16 @@ import { Editor } from '@tinymce/tinymce-react';
 
 const AdminForm = ({ editFormStatus, settings, type }) => {
   const [item, setItem] = useState({});
+  const [materialContent, setMaterialContent] = useState({});
 
   useEffect(() => {
     settings?.fields?.inputs?.map((item) => {
+      if (item.name === 'materialContent'){
+        return setMaterialContent((prevState) => ({
+          ...prevState,
+          value: item.defaultValue,
+        }));
+      }
       item.defaultValue &&
         setItem((prevState) => ({
           ...prevState,
@@ -35,15 +42,23 @@ const AdminForm = ({ editFormStatus, settings, type }) => {
     }));
   };
 
+  const handleEditorChange = (value) => {
+    setItem((prevState) => ({
+      ...prevState,
+      "materialContent": value,
+    }));
+  }
+
   const handleSubmit = async (method) => {
     try {
       setError('');
-      dispatch(method(item));
+      await dispatch(method(item));
       editFormStatus(false);
     } catch {
       setError('Failed to change data');
     }
   };
+
   return (
     <>
       <div className="formHeader">
@@ -57,6 +72,30 @@ const AdminForm = ({ editFormStatus, settings, type }) => {
       </div>
       <form className="adminForm" method="POST">
         {settings?.fields?.inputs?.map((item) => (
+          type === 'material' & item.name === 'materialContent' && (
+            <Editor
+              key={item.name}
+              initialValue={materialContent.value}
+              apiKey="2gu4ndvf4r33jvmnz0rkrvy7lrt26od89emjyo68oaqx3k9s"
+              init={{
+                width: '100%',
+                height: 500,
+                menubar: true,
+                plugins: [
+                  'advlist autolink lists link image charmap print anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount',
+                ],
+                toolbar:
+                  'undo redo | formatselect | ' +
+                  'bold italic backcolor | alignleft aligncenter ' +
+                  'alignright alignjustify | bullist numlist outdent indent | ' +
+                  'removeformat | help',
+                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+              }}
+              onEditorChange={handleEditorChange}
+            />
+          ) || (
           <div className="inputWrapper" key={item.name}>
             <label htmlFor={item.name}>{item.text}</label>
             <input
@@ -66,30 +105,7 @@ const AdminForm = ({ editFormStatus, settings, type }) => {
               defaultValue={item.defaultValue}
             />
           </div>
-        ))}
-        {type === 'material' && (
-          <Editor
-            onInit={(evt, editor) => (editorRef.current = editor)}
-            initialValue="<p>This is the initial content of the editor.</p>"
-            apiKey="2gu4ndvf4r33jvmnz0rkrvy7lrt26od89emjyo68oaqx3k9s"
-            init={{
-              width: '100%',
-              height: 500,
-              menubar: true,
-              plugins: [
-                'advlist autolink lists link image charmap print anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount',
-              ],
-              toolbar:
-                'undo redo | formatselect | ' +
-                'bold italic backcolor | alignleft aligncenter ' +
-                'alignright alignjustify | bullist numlist outdent indent | ' +
-                'removeformat | help',
-              content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-            }}
-          />
-        )}
+        )))}
         <div className="btnWrapper">
           {settings?.fields?.buttons?.map((item) => (
             <button
